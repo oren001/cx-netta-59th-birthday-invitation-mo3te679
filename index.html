@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎉 נטע חוגגת 59! 🎉</title>
+    <meta name="description" content="הזמנה ליום הולדת 59 של נטה - שבת 2 במאי, 19:00, מונקו רזידנס">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Heebo:wght@300;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #FFD700;
+            --gold-light: #FFF4CC;
+            --pink: #FF69B4;
+            --purple: #9B59B6;
+            --blue: #3498DB;
+            --orange: #FF6347;
+            --mint: #98FF98;
+            --coral: #FF7F50;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --shadow-gold: 0 8px 32px rgba(255, 215, 0, 0.4);
+            --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Heebo', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .invitation-wrapper {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        #invitation-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 40px 30px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: var(--shadow-gold), 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            animation: cardEntrance 1s ease-out;
+        }
+
+        @keyframes cardEntrance {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .gradient-overlay {
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+            animation: rotateGradient 20s linear infinite;
+        }
+
+        @keyframes rotateGradient {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .gold-accent {
+            position: absolute;
+            border: 3px solid var(--gold);
+            border-radius: 30px;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            pointer-events: none;
+            opacity: 0.6;
+            animation: pulseGold 3s ease-in-out infinite;
+        }
+
+        @keyframes pulseGold {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.01); }
+        }
+
+        .photo-frame {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 30px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid var(--gold);
+            box-shadow: var(--shadow-gold), 0 0 40px rgba(255, 215, 0, 0.6);
+            position: relative;
+            animation: photoGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes photoGlow {
+            from { box-shadow: var(--shadow-gold), 0 0 40px rgba(255, 215, 0, 0.6); }
+            to { box-shadow: var(--shadow-gold), 0 0 60px rgba(255, 215, 0, 0.9); }
+        }
+
+        #netta-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        #birthday-title {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .title-elegant {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--purple);
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+            animation: titleFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes titleFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .title-bold {
+            font-family: 'Heebo', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--pink), var(--orange), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+            animation: rainbowShift 5s ease-in-out infinite;
+        }
+
+        @keyframes rainbowShift {
+            0%, 100% { filter: hue-rotate(0deg); }
+            50% { filter: hue-rotate(30deg); }
+        }
+
+        .details-section {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 105, 180, 0.1));
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 2px solid var(--gold-light);
+            position: relative;
+        }
+
+        .hebrew-text {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: #333;
+            text-align: center;
+            font-weight: 300;
+        }
+
+        .hebrew-text strong {
+            font-weight: 700;
+            color: var(--purple);
+            font-size: 1.5rem;
+        }
+
+        #party-details {
+            margin-bottom: 20px;
+        }
+
+        #address-details {
+            font-size: 1.2rem;
+            color: #555;
+            margin-top: 15px;
+        }
+
+        #byo-notice {
+            background: linear-gradient(135deg, var(--mint), var(--blue));
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow-soft);
+            animation: noticePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes noticePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .button-primary, .button-secondary {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-family: 'Heebo', sans-serif;
+            margin-bottom: 15px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        #rsvp-button {
+            background: linear-gradient(135deg, var(--pink), var(--coral));
+            color: white;
+            animation: buttonFloat 2s ease-in-out infinite;
+        }
+
+        @keyframes buttonFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        #rsvp-button:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.5);
+        }
+
+        #download-button {
+            background: linear-gradient(135deg, var(--blue), var(--purple));
+            color: white;
+        }
+
+        #download-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.5);
+        }
+
+        #confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            opacity: 0.8;
+            animation: confettiFall linear infinite;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        .balloon {
+            position: absolute;
+            width: 40px;
+            height: 50px;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            opacity: 0.7;
+            animation: balloonFloat linear infinite;
+        }
+
+        .balloon::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            width: 2px;
+            height: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            transform: translateX(-50%);
+        }
+
+        @keyframes balloonFloat {
+            0% {
+                transform: translateY(100vh) translateX(0);
+            }
+            50% {
+                transform: translateY(50vh) translateX(20px);
+            }
+            100% {
+                transform: translateY(-100vh) translateX(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-view #invitation-card {
+                padding: 30px 20px;
+                border-radius: 20px;
+            }
+
+            .title-elegant {
+                font-size: 2rem;
+            }
+
+            .title-bold {
+                font-size: 2.3rem;
+            }
+
+            .hebrew-text {
+                font-size: 1.1rem;
+            }
+
+            .hebrew-text strong {
+                font-size: 1.3rem;
+            }
+
+            .photo-frame {
+                width: 160px;
+                height: 160px;
+            }
+
+            .button-primary, .button-secondary {
+                font-size: 1.1rem;
+                padding: 15px;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+
+            .no-print, #confetti-container, #rsvp-button, #download-button, .gradient-overlay {
+                display: none !important;
+            }
+
+            #invitation-card {
+                box-shadow: none;
+                border: 2px solid var(--gold);
+                page-break-inside: avoid;
+            }
+
+            .photo-frame {
+                animation: none;
+            }
+
+            .title-bold, .title-elegant {
+                animation: none;
+            }
+        }
+
+        .desktop-view {
+            display: none;
+        }
+
+        @media (min-width: 769px) {
+            .desktop-view {
+                display: block;
+            }
+            .mobile-view {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-view {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="confetti-container"></div>
+
+    <div class="invitation-wrapper">
+        <div id="invitation-card">
+            <div class="gradient-overlay"></div>
+            <div class="gold-accent"></div>
+
+            <div class="photo-frame">
+                <img id="netta-photo" src="https://i.imgur.com/vwEDZFq.jpg" alt="נטה" loading="eager">
+            </div>
+
+            <div id="birthday-title">
+                <div class="title-elegant">חגיגת יום הולדת</div>
+                <div class="title-bold">59 לנטה המדהימה! 🎉</div>
+            </div>
+
+            <div class="details-section">
+                <div id="party-details" class="hebrew-text">
+                    <strong>📅 שבת, 2 במאי</strong><br>
+                    <strong>🕖 19:00</strong>
+                </div>
+                <div id="address-details" class="hebrew-text">
+                    <strong>📍 מונקו רזידנס</strong><br>
+                    ברונטה 350, וייברלי<br>
+                    350 Bronte Rd, Waverley
+                </div>
+            </div>
+
+            <div id="byo-notice" class="no-print">
+                🍷🍕 הביאו אוכל ושתייה 🥗🍰<br>
+                (BYO Food & Drinks)
+            </div>
+
+            <a id="rsvp-button" class="button-primary no-print" href="#">
+                💌 אישור הגעה בוואטסאפ
+            </a>
+
+            <button id="download-button" class="button-secondary no-print">
+                📥 שמירת ההזמנה
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const IMGUR_IMAGE_URL = 'https://i.imgur.com/vwEDZFq.jpg';
+        const CONFETTI_COUNT = 50;
+        const BALLOON_COUNT = 10;
+        const WHATSAPP_NUMBER = '+61424242424';
+        const PARTY_DATE = 'Saturday May 2nd';
+        const PARTY_TIME = '7pm';
+        const PARTY_ADDRESS_HE = 'מונקו רזידנס, ברונטה 350, וייברלי';
+
+        function initConfetti() {
+            const container = document.getElementById('confetti-container');
+            
+            for (let i = 0; i < CONFETTI_COUNT; i++) {
+                setTimeout(() => {
+                    createConfettiPiece(container);
+                }, i * 100);
+            }
+
+            for (let i = 0; i < BALLOON_COUNT; i++) {
+                setTimeout(() => {
+                    createBalloon(container);
+                }, i * 200);
+            }
+        }
+
+        function createConfettiPiece(container) {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti-piece';
+            
+            const colors = ['#FF69B4', '#FFD700', '#9B59B6', '#3498DB', '#FF6347', '#98FF98', '#FF7F50'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            
+            const left = Math.random() * 100;
+            const duration = 3 + Math.random() * 4;
+            const delay = Math.random() * 5;
+            const size = 8 + Math.random() * 8;
+            
+            confetti.style.left = `${left}%`;
+            confetti.style.backgroundColor = color;
+            confetti.style.width = `${size}px`;
+            confetti.style.height = `${size}px`;
+            confetti.style.animationDuration = `${duration}s`;
+            confetti.style.animationDelay = `${delay}s`;
+            
+            if (Math.random() > 0.5) {
+                confetti.style.borderRadius = '50%';
+            }
+            
+            container.appendChild(confetti);
+            
+            setTimeout(() => {
+                confetti.remove();
+                createConfettiPiece(container);
+            }, (duration + delay) * 1000);
+        }
+
+        function createBalloon(container) {
+            const balloon = document.createElement('div');
+            balloon.className = 'balloon';
+            
+            const colors = ['#FF69B4', '#FFD700', '#9B59B6', '#3498DB', '#FF7F50', '#98FF98'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            
+            const left = Math.random() * 90;
+            const duration = 8 + Math.random() * 6;
+            const delay = Math.random() * 3;
+            
+            balloon.style.left = `${left}%`;
+            balloon.style.backgroundColor = color;
+            balloon.style.animationDuration = `${duration}s`;
+            balloon.style.animationDelay = `${delay}s`;
+            
+            container.appendChild(balloon);
+            
+            setTimeout(() => {
+                balloon.remove();
+                createBalloon(container);
+            }, (duration + delay) * 1000);
+        }
+
+        function handleRSVP() {
+            const message = encodeURIComponent(`שלום! אני מאשר/ת הגעה למסיבת יום ההולדת ה-59 של נטה! 🎉\n\nשבת 2 במאי, 19:00\nמונקו רזידנס, ברונטה 350, וייברלי`);
+            const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        function handleDownload() {
+            window.print();
+        }
+
+        function adjustForMobile() {
+            const isMobile = window.innerWidth <= 768;
+            if (isMobile) {
+                document.body.classList.add('mobile-view');
+                document.body.classList.remove('desktop-view');
+            } else {
+                document.body.classList.add('desktop-view');
+                document.body.classList.remove('mobile-view');
+            }
+        }
+
+        function initAnimations() {
+            const card = document.getElementById('invitation-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'cardEntrance 1s ease-out';
+                    }
+                });
+            });
+            
+            observer.observe(card);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initConfetti();
+            adjustForMobile();
+            initAnimations();
+            
+            const rsvpButton = document.getElementById('rsvp-button');
+            rsvpButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                handleRSVP();
+            });
+            
+            const downloadButton = document.getElementById('download-button');
+            downloadButton.addEventListener('click', handleDownload);
+            
+            window.addEventListener('resize', adjustForMobile);
+            
+            const photo = document.getElementById('netta-photo');
+            photo.addEventListener('error', () => {
+                photo.style.background = 'linear-gradient(135deg, var(--pink), var(--purple))';
+                photo.alt = '🎉';
+            });
+        });
+    </script>
+</body>
+</html>
