@@ -37,16 +37,38 @@ This project is ready to deploy! Follow these steps:
    - Click **Save**
    - Wait 2-3 minutes
 
-5. **Your site will be live at:**
-   ```
-   https://YOUR_USERNAME.github.io/netta-59th-birthday/
-   ```
-   (Replace YOUR_USERNAME with your actual GitHub username)
+5. **Find your deployment URL (IMPORTANT):**
+   
+   After enabling GitHub Pages, you need to get your actual deployment URL:
+   
+   **Method 1: Check GitHub Pages Settings**
+   - Go to your repository Settings → Pages
+   - At the top, you'll see a blue/green box that says:
+     "Your site is live at https://YOUR_USERNAME.github.io/netta-59th-birthday/"
+   - Copy this exact URL
+   - This appears after 2-3 minutes of deployment
+   
+   **Method 2: Construct the URL manually**
+   - Format: `https://[YOUR_GITHUB_USERNAME].github.io/[REPOSITORY_NAME]/`
+   - Example: If your GitHub username is "johnsmith" and repository is "netta-59th-birthday"
+   - Your URL will be: `https://johnsmith.github.io/netta-59th-birthday/`
+   
+   **Method 3: Check Repository Homepage**
+   - Go to your repository main page
+   - Look for "github-pages" under "Environments" on the right sidebar
+   - Click it to see deployment details and URL
+   
+   **Troubleshooting "No URL showing":**
+   - Ensure repository is **Public** (not Private)
+   - Verify you selected the **main** branch in Pages settings
+   - Wait 5 minutes and refresh the Settings → Pages page
+   - Check repository **Actions** tab for any deployment errors
+   - If still not working, try disabling and re-enabling GitHub Pages
 
-6. **Find your deployment URL:**
-   - After enabling GitHub Pages, the URL will appear at the top of the Pages settings
-   - Copy this URL and share it with guests
-   - Example: `https://johnsmith.github.io/netta-59th-birthday/`
+6. **Share your site:**
+   - Copy the deployment URL from above
+   - Share it with guests via WhatsApp, email, or text
+   - Test the link yourself first to make sure it works
 
 #### Alternative: Netlify (Easiest - No GitHub needed)
 
@@ -54,6 +76,7 @@ This project is ready to deploy! Follow these steps:
 2. Drag and drop the entire project folder
 3. Your site is live instantly with a URL like: `https://random-name.netlify.app`
 4. Optional: Customize the URL in site settings
+5. **Your URL is shown immediately** at the top of the page
 
 #### Alternative: Vercel
 
@@ -61,6 +84,7 @@ This project is ready to deploy! Follow these steps:
 2. Click "Add New" → "Project"
 3. Import from GitHub or upload files directly
 4. Site deploys automatically
+5. **Deployment URL is shown** in the dashboard
 
 ## 📋 Event Details
 
@@ -77,6 +101,7 @@ This project is ready to deploy! Follow these steps:
 - **Add to Calendar** functionality (downloads .ics file compatible with all calendar apps)
 - Elegant gold and gradient color scheme
 - Smooth animations and transitions
+- Venue photo with fallback placeholder
 
 ## 🚀 Quick Start
 
@@ -135,6 +160,42 @@ The "Add to Calendar" button creates a properly formatted .ics file that works w
 - iOS devices ✓
 - Desktop browsers ✓
 
+## 🖼️ Venue Photo
+
+**IMPORTANT:** The venue photo needs to be configured:
+
+The site currently uses a placeholder image. To add the actual venue photo:
+
+**Option 1: Use a direct image URL**
+
+If you have the Imgur album (https://imgur.com/a/Pto8gPP):
+1. Open the album
+2. Right-click on the image → "Open image in new tab"
+3. Copy the direct URL (format: `https://i.imgur.com/xxxxx.jpg`)
+4. Replace the image URL in `index.html` on the line with:
+   ```html
+   <img src="YOUR_IMAGE_URL_HERE" ...>
+   ```
+
+**Option 2: Upload to Imgur**
+1. Go to https://imgur.com/upload
+2. Upload the venue photo
+3. After upload, right-click → "Copy image address"
+4. Use this direct URL (must end in .jpg, .png, or .gif)
+5. Paste into `index.html` as shown above
+
+**Option 3: Use a different image host**
+- GitHub: Upload to repository, use: `https://raw.githubusercontent.com/USERNAME/REPO/main/venue.jpg`
+- Google Drive: Upload, make public, get direct link
+- Any other image hosting service
+
+**Testing the image:**
+- Paste the image URL directly in your browser
+- If it shows the image, it will work
+- If it redirects or shows a webpage, it won't work
+
+The site includes a fallback: if the image fails to load, it shows a styled placeholder with "Venue Photo" text.
+
 ## 🎨 Customization
 
 - **Colors:** Edit CSS variables in `:root` section
@@ -178,10 +239,26 @@ The "Add to Calendar" button creates a properly formatted .ics file that works w
 - File downloads with proper .ics extension
 
 ### Issue: "No deploy URL showing"
+- **Solution:** See the detailed "Find your deployment URL" section above
 - After enabling GitHub Pages, check Settings → Pages
 - The URL appears at the top: `https://YOUR_USERNAME.github.io/netta-59th-birthday/`
 - It takes 2-3 minutes for the first deployment
-- If still not showing, make sure the repository is Public
+- If still not showing after 5 minutes, make sure the repository is **Public**
+- Check the Actions tab for deployment status
+- Try disabling and re-enabling GitHub Pages
+
+### Issue: "Venue image not showing"
+- The image URL needs to be a direct link to an image file
+- Imgur album links don't work - you need the direct image URL
+- See the "Venue Photo" section above for detailed instructions
+- Test the image URL by pasting it directly in your browser
+- The site includes a fallback placeholder if the image fails
+
+### Issue: "Image shows Imgur page instead of the photo"
+- You're using the album URL instead of the direct image URL
+- Right-click the image on Imgur → "Open image in new tab"
+- Copy that URL (should end in .jpg, .png, etc.)
+- Use this direct URL in index.html
 
 ## 📄 License
 

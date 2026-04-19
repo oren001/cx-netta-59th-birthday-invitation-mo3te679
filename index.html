@@ -118,6 +118,10 @@
             box-shadow: var(--shadow-gold), 0 0 40px rgba(255, 215, 0, 0.6);
             position: relative;
             animation: photoGlow 2s ease-in-out infinite alternate;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--pink), var(--purple));
         }
 
         @keyframes photoGlow {
@@ -130,6 +134,24 @@
             height: 100%;
             object-fit: cover;
             object-position: center;
+            display: block;
+        }
+
+        #netta-photo.loading,
+        #netta-photo.error {
+            display: none;
+        }
+
+        .photo-placeholder {
+            display: none;
+            font-size: 4rem;
+            color: white;
+            text-align: center;
+        }
+
+        #netta-photo.loading + .photo-placeholder,
+        #netta-photo.error + .photo-placeholder {
+            display: block;
         }
 
         #birthday-title {
@@ -412,7 +434,8 @@
             <div class="gold-accent"></div>
 
             <div class="photo-frame">
-                <img id="netta-photo" src="https://i.imgur.com/vwEDZFq.jpg" alt="נטה" loading="eager">
+                <img id="netta-photo" class="loading" src="" alt="נטה" loading="eager">
+                <div class="photo-placeholder">🎉</div>
             </div>
 
             <div id="birthday-title">
@@ -448,13 +471,46 @@
     </div>
 
     <script>
-        const IMGUR_IMAGE_URL = 'https://i.imgur.com/vwEDZFq.jpg';
+        const IMGUR_IMAGE_URLS = [
+            'https://i.imgur.com/vwEDZFq.jpg',
+            'https://i.imgur.com/placeholder1.jpg',
+            'https://i.imgur.com/placeholder2.jpg'
+        ];
         const CONFETTI_COUNT = 50;
         const BALLOON_COUNT = 10;
         const WHATSAPP_NUMBER = '+61424242424';
         const PARTY_DATE = 'Saturday May 2nd';
         const PARTY_TIME = '7pm';
         const PARTY_ADDRESS_HE = 'מונקו רזידנס, ברונטה 350, וייברלי';
+
+        function loadImageWithFallback(imgElement, urls, currentIndex = 0) {
+            if (currentIndex >= urls.length) {
+                imgElement.classList.remove('loading');
+                imgElement.classList.add('error');
+                console.error('All image URLs failed to load. Using placeholder.');
+                return;
+            }
+
+            const currentUrl = urls[currentIndex];
+            imgElement.src = currentUrl;
+
+            const timeoutId = setTimeout(() => {
+                console.warn(`Image load timeout for: ${currentUrl}`);
+                loadImageWithFallback(imgElement, urls, currentIndex + 1);
+            }, 5000);
+
+            imgElement.onload = () => {
+                clearTimeout(timeoutId);
+                imgElement.classList.remove('loading', 'error');
+                console.log(`Image loaded successfully: ${currentUrl}`);
+            };
+
+            imgElement.onerror = () => {
+                clearTimeout(timeoutId);
+                console.warn(`Failed to load image: ${currentUrl}`);
+                loadImageWithFallback(imgElement, urls, currentIndex + 1);
+            };
+        }
 
         function initConfetti() {
             const container = document.getElementById('confetti-container');
@@ -633,6 +689,9 @@
             adjustForMobile();
             initAnimations();
             
+            const photo = document.getElementById('netta-photo');
+            loadImageWithFallback(photo, IMGUR_IMAGE_URLS);
+            
             const rsvpButton = document.getElementById('rsvp-button');
             rsvpButton.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -643,12 +702,6 @@
             downloadButton.addEventListener('click', handleDownload);
             
             window.addEventListener('resize', adjustForMobile);
-            
-            const photo = document.getElementById('netta-photo');
-            photo.addEventListener('error', () => {
-                photo.style.background = 'linear-gradient(135deg, var(--pink), var(--purple))';
-                photo.alt = '🎉';
-            });
         });
     </script>
 </body>
