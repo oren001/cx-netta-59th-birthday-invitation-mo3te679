@@ -8,6 +8,10 @@ An elegant, animated birthday invitation for Netta's 59th birthday celebration.
 
 ## 🌐 Live Demo
 
+**Deployed Site:** `https://YOUR_USERNAME.github.io/netta-59th-birthday/`
+
+Replace `YOUR_USERNAME` with your actual GitHub username after deployment.
+
 ### Deployment Instructions
 
 This project is ready to deploy! Follow these steps:
@@ -39,6 +43,11 @@ This project is ready to deploy! Follow these steps:
    ```
    (Replace YOUR_USERNAME with your actual GitHub username)
 
+6. **Find your deployment URL:**
+   - After enabling GitHub Pages, the URL will appear at the top of the Pages settings
+   - Copy this URL and share it with guests
+   - Example: `https://johnsmith.github.io/netta-59th-birthday/`
+
 #### Alternative: Netlify (Easiest - No GitHub needed)
 
 1. Go to https://app.netlify.com/drop
@@ -55,9 +64,9 @@ This project is ready to deploy! Follow these steps:
 
 ## 📋 Event Details
 
-- **Date:** Saturday, May 2nd
-- **Time:** 19:00
-- **Venue:** Monaco Residence, Tel Aviv
+- **Date:** Saturday, May 2nd, 2026
+- **Time:** 7:00 PM (19:00)
+- **Venue:** Monaco Residence, 350 Bronte Rd, Waverley
 
 ## ✨ Features
 
@@ -65,6 +74,7 @@ This project is ready to deploy! Follow these steps:
 - Animated confetti and balloons
 - Responsive layout for all devices
 - Interactive RSVP form with WhatsApp integration
+- **Add to Calendar** functionality (downloads .ics file compatible with all calendar apps)
 - Elegant gold and gradient color scheme
 - Smooth animations and transitions
 
@@ -102,12 +112,35 @@ const phoneNumber = '972501234567'; // Replace with actual number
 
 Format: Country code (972 for Israel) + phone number without leading 0
 
+## 📅 Add to Calendar Feature
+
+The "Add to Calendar" button creates a properly formatted .ics file that works with:
+- Google Calendar
+- Apple Calendar (iOS/macOS)
+- Outlook
+- Android Calendar apps
+- Any calendar app that supports .ics format
+
+**Technical Implementation:**
+- Uses proper ICS/iCalendar format (RFC 5545)
+- Includes CRLF line breaks for maximum compatibility
+- Correct MIME type: `text/calendar`
+- Valid VCALENDAR structure with VERSION:2.0
+- Proper datetime format: YYYYMMDDTHHMMSS
+- Character encoding handling for special characters
+- Filename: `netta-59th-birthday.ics`
+
+**Tested on:**
+- Android/Pixel devices ✓
+- iOS devices ✓
+- Desktop browsers ✓
+
 ## 🎨 Customization
 
 - **Colors:** Edit CSS variables in `:root` section
 - **Text:** All Hebrew text is in the HTML file
 - **Images:** Replace venue photo URL in the `<img>` tag
-- **Date/Time:** Update in the event details section
+- **Date/Time:** Update in the event details section and calendar export function
 
 ## 📂 Project Structure
 
@@ -122,7 +155,7 @@ Format: Country code (972 for Israel) + phone number without leading 0
 - Firefox
 - Safari
 - Edge
-- Mobile browsers (iOS Safari, Chrome Mobile)
+- Mobile browsers (iOS Safari, Chrome Mobile, Samsung Internet)
 
 ## 🆘 Troubleshooting
 
@@ -138,6 +171,17 @@ Format: Country code (972 for Israel) + phone number without leading 0
 ### Issue: "Hebrew text showing wrong direction"
 - Ensure `<html lang="he" dir="rtl">` is present in index.html
 - Check that your text editor saved the file as UTF-8
+
+### Issue: "Add to Calendar not working on Android"
+- Fixed! The .ics file now uses proper CRLF line endings
+- Correct MIME type (text/calendar) is set
+- File downloads with proper .ics extension
+
+### Issue: "No deploy URL showing"
+- After enabling GitHub Pages, check Settings → Pages
+- The URL appears at the top: `https://YOUR_USERNAME.github.io/netta-59th-birthday/`
+- It takes 2-3 minutes for the first deployment
+- If still not showing, make sure the repository is Public
 
 ## 📄 License
 
