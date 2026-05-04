@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎉 נטה חוגגת 59! 🎉</title>
-    <meta name="description" content="הזמנה ליום הולדת 59 של נטה - שבת 2 במאי, 19:00, מונקו רזידנס">
+    <title>הקורס של נטה — נוכחות, גוף ותנועה</title>
+    <meta name="description" content="קורס סדנאי בהנחיית נטה — מסע של נוכחות, גוף ותנועה. הרשמה פתוחה.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Heebo:wght@300;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Heebo:wght@200;300;400;500;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -16,692 +16,631 @@
         }
 
         :root {
-            --gold: #FFD700;
-            --gold-light: #FFF4CC;
-            --pink: #FF69B4;
-            --purple: #9B59B6;
-            --blue: #3498DB;
-            --orange: #FF6347;
-            --mint: #98FF98;
-            --coral: #FF7F50;
-            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            --shadow-gold: 0 8px 32px rgba(255, 215, 0, 0.4);
-            --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --bg-deep: #0a0a0a;
+            --bg-soft: #141414;
+            --bg-card: #1c1c1c;
+            --line: #2a2a2a;
+            --text: #ece7df;
+            --text-muted: #9c958a;
+            --accent: #c9a96e;
+            --accent-warm: #e0bd7d;
+            --accent-glow: rgba(201, 169, 110, 0.18);
+            --shadow-soft: 0 20px 60px rgba(0, 0, 0, 0.5);
         }
 
-        body {
+        html, body {
+            background: var(--bg-deep);
+            color: var(--text);
             font-family: 'Heebo', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            background-attachment: fixed;
+            font-weight: 300;
+            line-height: 1.7;
             min-height: 100vh;
             overflow-x: hidden;
-            position: relative;
         }
 
-        .invitation-wrapper {
+        ::selection {
+            background: var(--accent);
+            color: var(--bg-deep);
+        }
+
+        .container {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* HERO */
+        #hero {
+            position: relative;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
-            position: relative;
-            z-index: 1;
-        }
-
-        #invitation-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 30px;
-            padding: 40px 30px;
-            max-width: 600px;
-            width: 100%;
-            box-shadow: var(--shadow-gold), 0 20px 60px rgba(0, 0, 0, 0.3);
-            position: relative;
+            text-align: center;
             overflow: hidden;
-            backdrop-filter: blur(10px);
-            animation: cardEntrance 1s ease-out;
+            padding: 80px 24px;
         }
 
-        @keyframes cardEntrance {
-            from {
-                opacity: 0;
-                transform: scale(0.9) translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
-
-        .gradient-overlay {
+        #hero::before {
+            content: '';
             position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            width: 120vmin;
+            height: 120vmin;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle at center, var(--accent-glow) 0%, transparent 60%);
             pointer-events: none;
-            animation: rotateGradient 20s linear infinite;
+            animation: spotlightBreath 6s ease-in-out infinite;
         }
 
-        @keyframes rotateGradient {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        @keyframes spotlightBreath {
+            0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
         }
 
-        .gold-accent {
-            position: absolute;
-            border: 3px solid var(--gold);
-            border-radius: 30px;
-            top: 10px;
-            left: 10px;
-            right: 10px;
-            bottom: 10px;
-            pointer-events: none;
-            opacity: 0.6;
-            animation: pulseGold 3s ease-in-out infinite;
-        }
-
-        @keyframes pulseGold {
-            0%, 100% { opacity: 0.6; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.01); }
-        }
-
-        .photo-frame {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 30px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 5px solid var(--gold);
-            box-shadow: var(--shadow-gold), 0 0 40px rgba(255, 215, 0, 0.6);
+        .hero-inner {
             position: relative;
-            animation: photoGlow 2s ease-in-out infinite alternate;
-            display: flex;
-            align-items: center;
+            z-index: 2;
+            max-width: 720px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 1.4s ease-out 0.2s forwards;
+        }
+
+        @keyframes fadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .eyebrow {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.15rem;
+            color: var(--accent-warm);
+            letter-spacing: 0.12em;
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: clamp(2.4rem, 6vw, 4.4rem);
+            line-height: 1.1;
+            margin-bottom: 28px;
+            letter-spacing: -0.01em;
+        }
+
+        h1 .accent {
+            color: var(--accent);
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        .hero-sub {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 540px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        .hero-meta {
+            display: inline-flex;
+            gap: 32px;
+            flex-wrap: wrap;
             justify-content: center;
-            background: linear-gradient(135deg, var(--pink), var(--purple));
+            padding: 18px 32px;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
         }
 
-        @keyframes photoGlow {
-            from { box-shadow: var(--shadow-gold), 0 0 40px rgba(255, 215, 0, 0.6); }
-            to { box-shadow: var(--shadow-gold), 0 0 60px rgba(255, 215, 0, 0.9); }
+        .hero-meta span strong {
+            color: var(--text);
+            font-weight: 500;
         }
 
-        #netta-photo {
+        .scroll-hint {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            letter-spacing: 0.2em;
+            opacity: 0.7;
+            animation: scrollBob 2.4s ease-in-out infinite;
+        }
+
+        @keyframes scrollBob {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+
+        /* SECTIONS */
+        section.block {
+            padding: 100px 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .section-eyebrow {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            color: var(--accent-warm);
+            font-size: 1rem;
+            letter-spacing: 0.18em;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: clamp(2rem, 4.5vw, 3rem);
+            text-align: center;
+            margin-bottom: 56px;
+            line-height: 1.2;
+        }
+
+        h2 .accent {
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        /* PORTRAIT */
+        .portrait-band {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 56px;
+            align-items: center;
+        }
+
+        .portrait-frame {
+            position: relative;
+            aspect-ratio: 4 / 3;
+            background: var(--bg-soft);
+            overflow: hidden;
+            border: 1px solid var(--line);
+        }
+
+        .portrait-frame img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center;
-            display: block;
+            filter: grayscale(20%) contrast(1.05);
+            transition: filter 0.6s ease;
         }
 
-        #netta-photo.loading,
-        #netta-photo.error {
-            display: none;
+        .portrait-frame:hover img {
+            filter: grayscale(0%) contrast(1.1);
         }
 
-        .photo-placeholder {
-            display: none;
-            font-size: 4rem;
-            color: white;
-            text-align: center;
+        .portrait-text p {
+            font-size: 1.05rem;
+            color: var(--text);
+            margin-bottom: 18px;
         }
 
-        #netta-photo.loading + .photo-placeholder,
-        #netta-photo.error + .photo-placeholder {
-            display: block;
+        .portrait-text p:last-child {
+            color: var(--text-muted);
         }
 
-        #birthday-title {
-            text-align: center;
-            margin-bottom: 30px;
+        /* CURRICULUM */
+        .modules {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .module {
+            background: var(--bg-card);
+            border: 1px solid var(--line);
+            padding: 36px 28px;
+            transition: border-color 0.4s ease, transform 0.4s ease;
             position: relative;
         }
 
-        .title-elegant {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            color: var(--purple);
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            margin-bottom: 10px;
-            animation: titleFloat 3s ease-in-out infinite;
+        .module:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
         }
 
-        @keyframes titleFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        .module-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            letter-spacing: 0.1em;
         }
 
-        .title-bold {
-            font-family: 'Heebo', sans-serif;
-            font-size: 3rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--pink), var(--orange), var(--gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1.2;
-            animation: rainbowShift 5s ease-in-out infinite;
-        }
-
-        @keyframes rainbowShift {
-            0%, 100% { filter: hue-rotate(0deg); }
-            50% { filter: hue-rotate(30deg); }
-        }
-
-        .details-section {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 105, 180, 0.1));
-            border-radius: 20px;
-            padding: 25px;
-            margin-bottom: 25px;
-            border: 2px solid var(--gold-light);
-            position: relative;
-        }
-
-        .hebrew-text {
-            font-size: 1.3rem;
-            line-height: 1.8;
-            color: #333;
-            text-align: center;
-            font-weight: 300;
-        }
-
-        .hebrew-text strong {
-            font-weight: 700;
-            color: var(--purple);
+        .module h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
             font-size: 1.5rem;
+            margin-bottom: 14px;
+            color: var(--text);
         }
 
-        #party-details {
-            margin-bottom: 20px;
+        .module p {
+            color: var(--text-muted);
+            font-size: 0.98rem;
         }
 
-        #address-details {
-            font-size: 1.2rem;
-            color: #555;
-            margin-top: 15px;
+        /* DETAILS LIST */
+        .details-list {
+            max-width: 620px;
+            margin: 0 auto;
+            list-style: none;
         }
 
-        #byo-notice {
-            background: linear-gradient(135deg, var(--mint), var(--blue));
-            color: white;
-            padding: 20px;
-            border-radius: 15px;
+        .details-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 22px 0;
+            border-bottom: 1px solid var(--line);
+            gap: 24px;
+        }
+
+        .details-list li:last-child {
+            border-bottom: none;
+        }
+
+        .details-list .label {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            color: var(--accent-warm);
+            font-size: 1.1rem;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+        }
+
+        .details-list .value {
+            color: var(--text);
+            text-align: left;
+            direction: rtl;
+        }
+
+        .details-list .value strong {
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        /* CTA */
+        #cta {
             text-align: center;
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 25px;
-            box-shadow: var(--shadow-soft);
-            animation: noticePulse 2s ease-in-out infinite;
+            background: linear-gradient(180deg, transparent 0%, rgba(201, 169, 110, 0.04) 100%);
         }
 
-        @keyframes noticePulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+        #cta h2 {
+            margin-bottom: 24px;
         }
 
-        .button-primary, .button-secondary {
-            display: block;
-            width: 100%;
-            padding: 18px;
-            font-size: 1.3rem;
-            font-weight: 700;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            text-decoration: none;
-            text-align: center;
-            transition: all 0.3s ease;
+        #cta p {
+            color: var(--text-muted);
+            max-width: 520px;
+            margin: 0 auto 40px;
+            font-size: 1.05rem;
+        }
+
+        .button-row {
+            display: inline-flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 18px 42px;
             font-family: 'Heebo', sans-serif;
-            margin-bottom: 15px;
-            box-shadow: var(--shadow-soft);
-        }
-
-        #rsvp-button {
-            background: linear-gradient(135deg, var(--pink), var(--coral));
-            color: white;
-            animation: buttonFloat 2s ease-in-out infinite;
-        }
-
-        @keyframes buttonFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
-
-        #rsvp-button:hover {
-            transform: scale(1.05) translateY(-5px);
-            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.5);
-        }
-
-        #download-button {
-            background: linear-gradient(135deg, var(--blue), var(--purple));
-            color: white;
-        }
-
-        #download-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.5);
-        }
-
-        #confetti-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
+            font-size: 1rem;
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            text-decoration: none;
+            cursor: pointer;
+            border: 1px solid var(--accent);
+            background: transparent;
+            color: var(--accent);
+            transition: all 0.4s ease;
+            position: relative;
             overflow: hidden;
         }
 
-        .confetti-piece {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            opacity: 0.8;
-            animation: confettiFall linear infinite;
+        .btn-primary {
+            background: var(--accent);
+            color: var(--bg-deep);
         }
 
-        @keyframes confettiFall {
-            0% {
-                transform: translateY(-100vh) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) rotate(720deg);
-                opacity: 0;
-            }
+        .btn-primary:hover {
+            background: var(--accent-warm);
+            border-color: var(--accent-warm);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(201, 169, 110, 0.25);
         }
 
-        .balloon {
-            position: absolute;
-            width: 40px;
-            height: 50px;
-            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-            opacity: 0.7;
-            animation: balloonFloat linear infinite;
+        .btn-secondary:hover {
+            background: var(--accent);
+            color: var(--bg-deep);
+            transform: translateY(-2px);
         }
 
-        .balloon::after {
-            content: '';
-            position: absolute;
-            bottom: -20px;
-            left: 50%;
-            width: 2px;
-            height: 20px;
-            background: rgba(0, 0, 0, 0.2);
-            transform: translateX(-50%);
+        /* FOOTER */
+        footer {
+            padding: 50px 24px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--line);
+            letter-spacing: 0.05em;
         }
 
-        @keyframes balloonFloat {
-            0% {
-                transform: translateY(100vh) translateX(0);
-            }
-            50% {
-                transform: translateY(50vh) translateX(20px);
-            }
-            100% {
-                transform: translateY(-100vh) translateX(0);
-            }
+        footer .quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--accent-warm);
+            margin-bottom: 16px;
         }
 
-        @media (max-width: 768px) {
-            .mobile-view #invitation-card {
-                padding: 30px 20px;
-                border-radius: 20px;
+        /* RESPONSIVE */
+        @media (max-width: 720px) {
+            .portrait-band {
+                grid-template-columns: 1fr;
+                gap: 36px;
             }
 
-            .title-elegant {
-                font-size: 2rem;
+            section.block {
+                padding: 70px 0;
             }
 
-            .title-bold {
-                font-size: 2.3rem;
+            .hero-meta {
+                gap: 18px;
+                padding: 14px 20px;
+                font-size: 0.88rem;
             }
 
-            .hebrew-text {
-                font-size: 1.1rem;
+            .details-list li {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 6px;
             }
 
-            .hebrew-text strong {
-                font-size: 1.3rem;
+            .details-list .value {
+                text-align: right;
             }
 
-            .photo-frame {
-                width: 160px;
-                height: 160px;
-            }
-
-            .button-primary, .button-secondary {
-                font-size: 1.1rem;
-                padding: 15px;
+            .btn {
+                padding: 16px 32px;
+                font-size: 0.95rem;
             }
         }
 
-        @media print {
-            body {
-                background: white;
-            }
-
-            .no-print, #confetti-container, #rsvp-button, #download-button, .gradient-overlay {
-                display: none !important;
-            }
-
-            #invitation-card {
-                box-shadow: none;
-                border: 2px solid var(--gold);
-                page-break-inside: avoid;
-            }
-
-            .photo-frame {
-                animation: none;
-            }
-
-            .title-bold, .title-elegant {
-                animation: none;
-            }
+        /* REVEAL ON SCROLL */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 1s ease, transform 1s ease;
         }
 
-        .desktop-view {
-            display: none;
-        }
-
-        @media (min-width: 769px) {
-            .desktop-view {
-                display: block;
-            }
-            .mobile-view {
-                display: none;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .mobile-view {
-                display: block;
-            }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <div id="confetti-container"></div>
 
-    <div class="invitation-wrapper">
-        <div id="invitation-card">
-            <div class="gradient-overlay"></div>
-            <div class="gold-accent"></div>
-
-            <div class="photo-frame">
-                <img id="netta-photo" class="loading" src="" alt="נטה" loading="eager">
-                <div class="photo-placeholder">🎉</div>
+    <!-- HERO -->
+    <section id="hero">
+        <div class="hero-inner">
+            <div class="eyebrow">— קורס חדש בהנחיית נטה —</div>
+            <h1>נוכחות, גוף<br><span class="accent">ותנועה</span></h1>
+            <p class="hero-sub">
+                מסע סדנאי בן שמונה מפגשים — חקירה של נוכחות, הקשבה לגוף, ושפת התנועה האישית.
+                מרחב אינטימי לכל מי שמבקשת לחזור הביתה אל עצמה.
+            </p>
+            <div class="hero-meta">
+                <span><strong>פתיחה</strong> ספטמבר 2026</span>
+                <span><strong>8 מפגשים</strong> שבועיים</span>
+                <span><strong>קבוצה קטנה</strong> עד 12 משתתפות</span>
             </div>
-
-            <div id="birthday-title">
-                <div class="title-elegant">חגיגת יום הולדת</div>
-                <div class="title-bold">Netta's 59th Birthday 🎉</div>
+            <div class="button-row">
+                <a href="#cta" class="btn btn-primary">להרשמה</a>
+                <a href="#about" class="btn btn-secondary">קראו עוד</a>
             </div>
-
-            <div class="details-section">
-                <div id="party-details" class="hebrew-text">
-                    <strong>📅 שבת, 2 במאי</strong><br>
-                    <strong>🕖 19:00</strong>
-                </div>
-                <div id="address-details" class="hebrew-text">
-                    <strong>📍 מונקו רזידנס</strong><br>
-                    ברונטה 350, וייברלי<br>
-                    350 Bronte Rd, Waverley
-                </div>
-            </div>
-
-            <div id="byo-notice" class="no-print">
-                🍷🍕 הביאו אוכל ושתייה 🥗🍰<br>
-                (BYO Food & Drinks)
-            </div>
-
-            <a id="rsvp-button" class="button-primary no-print" href="#">
-                💌 אישור הגעה בוואטסאפ
-            </a>
-
-            <button id="download-button" class="button-secondary no-print">
-                📥 שמירת ההזמנה
-            </button>
         </div>
-    </div>
+        <div class="scroll-hint">↓ גלילה</div>
+    </section>
+
+    <!-- ABOUT / PORTRAIT -->
+    <section id="about" class="block">
+        <div class="container">
+            <div class="section-eyebrow">— על הקורס —</div>
+            <h2>מרחב לחזור<br><span class="accent">אל הגוף</span></h2>
+
+            <div class="portrait-band reveal">
+                <div class="portrait-frame">
+                    <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=900&q=80"
+                         alt="דימוי אווירה — דמות באור זרקור"
+                         loading="lazy">
+                </div>
+                <div class="portrait-text">
+                    <p>הקורס נולד מתוך שנים של עבודה עם הגוף, התנועה והנוכחות — ומתוך אמונה שלכל אחת יש שפה פנימית שמבקשת לדבר.</p>
+                    <p>במהלך שמונה מפגשים נחקור יחד מצבי הקשבה, מגע עדין עם הקרקע, איכויות נשימה, ומרחבי דממה. אין צורך בניסיון קודם — רק בנכונות להיות נוכחת.</p>
+                    <p>זהו מרחב נשי, מוגן וחומל, לכל מי שמבקשת להאט, להתבונן, ולהיפגש מחדש עם עצמה.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CURRICULUM -->
+    <section id="curriculum" class="block">
+        <div class="container">
+            <div class="section-eyebrow">— מבנה הקורס —</div>
+            <h2>שמונה <span class="accent">תחנות</span> במסע</h2>
+
+            <div class="modules">
+                <div class="module reveal">
+                    <div class="module-num">I.</div>
+                    <h3>הגעה</h3>
+                    <p>הקרקע, הנשימה, והכניסה אל המרחב הפנימי.</p>
+                </div>
+                <div class="module reveal">
+                    <div class="module-num">II.</div>
+                    <h3>הקשבה</h3>
+                    <p>איכויות של דממה, שמיעה פנימית והתבוננות.</p>
+                </div>
+                <div class="module reveal">
+                    <div class="module-num">III.</div>
+                    <h3>גבולות</h3>
+                    <p>חקירה של "כן" ו"לא" דרך הגוף והתנועה.</p>
+                </div>
+                <div class="module reveal">
+                    <div class="module-num">IV.</div>
+                    <h3>מרחב</h3>
+                    <p>מערכות יחסים — בין הגוף לחלל ובין משתתפות.</p>
+                </div>
+                <div class="module reveal">
+                    <div class="module-num">V.</div>
+                    <h3>מגע</h3>
+                    <p>תקשורת לא־מילולית, מגע מודע, אמון.</p>
+                </div>
+                <div class="module reveal">
+                    <div class="module-num">VI.</div>
+                    <h3>קול</h3>
+                    <p>הוצאת הקול הפנימי — נשימה, צליל, ביטוי.</p>
+                </div>
+                <div class="module reveal">
+                    <div class="module-num">VII.</div>
+                    <h3>שחרור</h3>
+                    <p>תנועה אותנטית, רגש, וזרימה חופשית.</p>
+                </div>
+                <div class="module reveal">
+                    <div class="module-num">VIII.</div>
+                    <h3>חזרה</h3>
+                    <p>סגירת מעגל — מה לוקחות איתנו הלאה.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DETAILS -->
+    <section id="details" class="block">
+        <div class="container">
+            <div class="section-eyebrow">— פרטים מעשיים —</div>
+            <h2>המסגרת <span class="accent">בקצרה</span></h2>
+
+            <ul class="details-list reveal">
+                <li>
+                    <span class="label">מתי</span>
+                    <span class="value"><strong>ימי שלישי</strong>, 19:00–21:30 · החל מ־1 בספטמבר 2026</span>
+                </li>
+                <li>
+                    <span class="label">היכן</span>
+                    <span class="value">סטודיו "המרחב" · רחוב הרצל 12, תל אביב</span>
+                </li>
+                <li>
+                    <span class="label">משך</span>
+                    <span class="value">8 מפגשים שבועיים · סך הכול כ־20 שעות עבודה</span>
+                </li>
+                <li>
+                    <span class="label">קבוצה</span>
+                    <span class="value">קבוצה אינטימית · עד 12 משתתפות</span>
+                </li>
+                <li>
+                    <span class="label">השקעה</span>
+                    <span class="value"><strong>1,800 ₪</strong> · אפשרות לתשלומים</span>
+                </li>
+                <li>
+                    <span class="label">לחזור עם</span>
+                    <span class="value">בגדים נוחים · בקבוק מים · יומן אישי (אופציונלי)</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="cta" class="block">
+        <div class="container">
+            <div class="section-eyebrow">— הרשמה —</div>
+            <h2>מקום אחד <span class="accent">מחכה לך</span></h2>
+            <p>
+                המקומות מוגבלים. אם הקורס מהדהד בך — שלחי הודעה ונתאם שיחת היכרות קצרה לפני ההרשמה.
+            </p>
+            <div class="button-row">
+                <a id="whatsapp-button" class="btn btn-primary" href="#">
+                    שליחת הודעה בוואטסאפ
+                </a>
+                <a id="email-button" class="btn btn-secondary" href="#">
+                    שליחת מייל
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="quote">"הגוף יודע. עלינו רק להקשיב."</div>
+        <div>הקורס של נטה · 2026 ©</div>
+    </footer>
 
     <script>
-        const IMGUR_IMAGE_URLS = [
-            'https://i.imgur.com/vwEDZFq.jpg',
-            'https://i.imgur.com/placeholder1.jpg',
-            'https://i.imgur.com/placeholder2.jpg'
-        ];
-        const CONFETTI_COUNT = 50;
-        const BALLOON_COUNT = 10;
-        const WHATSAPP_NUMBER = '+61424242424';
-        const PARTY_DATE = 'Saturday May 2nd';
-        const PARTY_TIME = '7pm';
-        const PARTY_ADDRESS_HE = 'מונקו רזידנס, ברונטה 350, וייברלי';
+        const WHATSAPP_NUMBER = '972501234567';
+        const EMAIL_ADDRESS = 'netta@example.com';
+        const COURSE_NAME = 'נוכחות, גוף ותנועה';
 
-        function loadImageWithFallback(imgElement, urls, currentIndex = 0) {
-            if (currentIndex >= urls.length) {
-                imgElement.classList.remove('loading');
-                imgElement.classList.add('error');
-                console.error('All image URLs failed to load. Using placeholder.');
-                return;
-            }
-
-            const currentUrl = urls[currentIndex];
-            imgElement.src = currentUrl;
-
-            const timeoutId = setTimeout(() => {
-                console.warn(`Image load timeout for: ${currentUrl}`);
-                loadImageWithFallback(imgElement, urls, currentIndex + 1);
-            }, 5000);
-
-            imgElement.onload = () => {
-                clearTimeout(timeoutId);
-                imgElement.classList.remove('loading', 'error');
-                console.log(`Image loaded successfully: ${currentUrl}`);
-            };
-
-            imgElement.onerror = () => {
-                clearTimeout(timeoutId);
-                console.warn(`Failed to load image: ${currentUrl}`);
-                loadImageWithFallback(imgElement, urls, currentIndex + 1);
-            };
+        function handleWhatsApp(e) {
+            e.preventDefault();
+            const message = encodeURIComponent(
+                `שלום נטה, ראיתי את אתר הקורס "${COURSE_NAME}" ואשמח לשמוע פרטים נוספים ולתאם שיחת היכרות.`
+            );
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, '_blank');
         }
 
-        function initConfetti() {
-            const container = document.getElementById('confetti-container');
-            
-            for (let i = 0; i < CONFETTI_COUNT; i++) {
-                setTimeout(() => {
-                    createConfettiPiece(container);
-                }, i * 100);
-            }
-
-            for (let i = 0; i < BALLOON_COUNT; i++) {
-                setTimeout(() => {
-                    createBalloon(container);
-                }, i * 200);
-            }
+        function handleEmail(e) {
+            e.preventDefault();
+            const subject = encodeURIComponent(`התעניינות בקורס "${COURSE_NAME}"`);
+            const body = encodeURIComponent(
+                `שלום נטה,\n\nראיתי את אתר הקורס ואשמח לשמוע פרטים נוספים.\n\nתודה,`
+            );
+            window.location.href = `mailto:${EMAIL_ADDRESS}?subject=${subject}&body=${body}`;
         }
 
-        function createConfettiPiece(container) {
-            const confetti = document.createElement('div');
-            confetti.className = 'confetti-piece';
-            
-            const colors = ['#FF69B4', '#FFD700', '#9B59B6', '#3498DB', '#FF6347', '#98FF98', '#FF7F50'];
-            const color = colors[Math.floor(Math.random() * colors.length)];
-            
-            const left = Math.random() * 100;
-            const duration = 3 + Math.random() * 4;
-            const delay = Math.random() * 5;
-            const size = 8 + Math.random() * 8;
-            
-            confetti.style.left = `${left}%`;
-            confetti.style.backgroundColor = color;
-            confetti.style.width = `${size}px`;
-            confetti.style.height = `${size}px`;
-            confetti.style.animationDuration = `${duration}s`;
-            confetti.style.animationDelay = `${delay}s`;
-            
-            if (Math.random() > 0.5) {
-                confetti.style.borderRadius = '50%';
-            }
-            
-            container.appendChild(confetti);
-            
-            setTimeout(() => {
-                confetti.remove();
-                createConfettiPiece(container);
-            }, (duration + delay) * 1000);
-        }
-
-        function createBalloon(container) {
-            const balloon = document.createElement('div');
-            balloon.className = 'balloon';
-            
-            const colors = ['#FF69B4', '#FFD700', '#9B59B6', '#3498DB', '#FF7F50', '#98FF98'];
-            const color = colors[Math.floor(Math.random() * colors.length)];
-            
-            const left = Math.random() * 90;
-            const duration = 8 + Math.random() * 6;
-            const delay = Math.random() * 3;
-            
-            balloon.style.left = `${left}%`;
-            balloon.style.backgroundColor = color;
-            balloon.style.animationDuration = `${duration}s`;
-            balloon.style.animationDelay = `${delay}s`;
-            
-            container.appendChild(balloon);
-            
-            setTimeout(() => {
-                balloon.remove();
-                createBalloon(container);
-            }, (duration + delay) * 1000);
-        }
-
-        function handleRSVP() {
-            const message = encodeURIComponent(`שלום! אני מאשר/ת הגעה למסיבת יום ההולדת ה-59 של נטה! 🎉\n\nשבת 2 במאי, 19:00\nמונקו רזידנס, ברונטה 350, וייברלי`);
-            const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
-            window.open(whatsappUrl, '_blank');
-        }
-
-        function handleDownload() {
-            const eventTitle = "Netta's 59th Birthday";
-            const eventLocation = "Monaco Residence, 350 Bronte Rd, Waverley";
-            const eventDescription = "Join us for Netta's 59th Birthday celebration! BYO Food & Drinks";
-            
-            const eventStartDate = new Date('2026-05-02T19:00:00');
-            const eventEndDate = new Date('2026-05-02T23:00:00');
-            
-            function formatICSDate(date) {
-                const year = date.getFullYear();
-                const month = String(date.getMonth() + 1).padStart(2, '0');
-                const day = String(date.getDate()).padStart(2, '0');
-                const hours = String(date.getHours()).padStart(2, '0');
-                const minutes = String(date.getMinutes()).padStart(2, '0');
-                const seconds = String(date.getSeconds()).padStart(2, '0');
-                return `${year}${month}${day}T${hours}${minutes}${seconds}`;
-            }
-            
-            function escapeICSText(text) {
-                return text.replace(/\\/g, '\\\\')
-                           .replace(/;/g, '\\;')
-                           .replace(/,/g, '\\,')
-                           .replace(/\n/g, '\\n');
-            }
-            
-            const startDateFormatted = formatICSDate(eventStartDate);
-            const endDateFormatted = formatICSDate(eventEndDate);
-            const now = formatICSDate(new Date());
-            
-            const icsContent = [
-                'BEGIN:VCALENDAR',
-                'VERSION:2.0',
-                'PRODID:-//Netta Birthday//Birthday Invitation//EN',
-                'CALSCALE:GREGORIAN',
-                'METHOD:PUBLISH',
-                'BEGIN:VEVENT',
-                `DTSTART:${startDateFormatted}`,
-                `DTEND:${endDateFormatted}`,
-                `DTSTAMP:${now}`,
-                `UID:netta-59th-birthday-${now}@invitation.local`,
-                `SUMMARY:${escapeICSText(eventTitle)}`,
-                `DESCRIPTION:${escapeICSText(eventDescription)}`,
-                `LOCATION:${escapeICSText(eventLocation)}`,
-                'STATUS:CONFIRMED',
-                'SEQUENCE:0',
-                'BEGIN:VALARM',
-                'TRIGGER:-PT24H',
-                'ACTION:DISPLAY',
-                `DESCRIPTION:Reminder: ${escapeICSText(eventTitle)} tomorrow!`,
-                'END:VALARM',
-                'END:VEVENT',
-                'END:VCALENDAR'
-            ].join('\r\n');
-            
-            const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
-            const url = URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = 'netta-59th-birthday.ics';
-            link.style.display = 'none';
-            
-            document.body.appendChild(link);
-            link.click();
-            
-            setTimeout(() => {
-                document.body.removeChild(link);
-                URL.revokeObjectURL(url);
-            }, 100);
-        }
-
-        function adjustForMobile() {
-            const isMobile = window.innerWidth <= 768;
-            if (isMobile) {
-                document.body.classList.add('mobile-view');
-                document.body.classList.remove('desktop-view');
-            } else {
-                document.body.classList.add('desktop-view');
-                document.body.classList.remove('mobile-view');
-            }
-        }
-
-        function initAnimations() {
-            const card = document.getElementById('invitation-card');
-            
+        function initReveal() {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.style.animation = 'cardEntrance 1s ease-out';
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
                     }
                 });
+            }, { threshold: 0.15 });
+
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        }
+
+        function initSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const targetId = link.getAttribute('href');
+                    if (targetId === '#') return;
+                    const target = document.querySelector(targetId);
+                    if (!target) return;
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
             });
-            
-            observer.observe(card);
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            initConfetti();
-            adjustForMobile();
-            initAnimations();
-            
-            const photo = document.getElementById('netta-photo');
-            loadImageWithFallback(photo, IMGUR_IMAGE_URLS);
-            
-            const rsvpButton = document.getElementById('rsvp-button');
-            rsvpButton.addEventListener('click', (e) => {
-                e.preventDefault();
-                handleRSVP();
-            });
-            
-            const downloadButton = document.getElementById('download-button');
-            downloadButton.addEventListener('click', handleDownload);
-            
-            window.addEventListener('resize', adjustForMobile);
+            initReveal();
+            initSmoothScroll();
+            document.getElementById('whatsapp-button').addEventListener('click', handleWhatsApp);
+            document.getElementById('email-button').addEventListener('click', handleEmail);
         });
     </script>
 </body>
