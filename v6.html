@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a0420">
+    <title>החופש לשחק — נטע · גרסה 6</title>
+    <meta name="description" content="קורס סדנאי בהנחיית נטע. גרסה: Y2K ניאון.">
+    <meta property="og:title" content="החופש לשחק — נטע">
+    <meta property="og:image" content="assets/netta.jpg">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g'%3E%3Cstop offset='0' stop-color='%23ff00ee'/%3E%3Cstop offset='1' stop-color='%2300eaff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' fill='%230a0420'/%3E%3Ctext x='50%25' y='62%25' font-family='monospace' font-size='44' font-weight='900' text-anchor='middle' fill='url(%23g)'%3E%21%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&family=VT323&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        :root {
+            --bg: #0a0420;
+            --bg-2: #1a0a3a;
+            --bg-3: #2a0a4a;
+            --magenta: #ff00ee;
+            --cyan: #00eaff;
+            --lime: #b6ff00;
+            --yellow: #ffeb3b;
+            --purple: #9d4fff;
+            --paper: #f5f5ff;
+            --gradient-1: linear-gradient(135deg, #ff00ee 0%, #00eaff 100%);
+            --gradient-2: linear-gradient(135deg, #b6ff00 0%, #ff00ee 100%);
+            --gradient-3: linear-gradient(135deg, #00eaff 0%, #9d4fff 100%);
+            --pixel: 'VT323', monospace;
+            --retro: 'Press Start 2P', monospace;
+            --sans: 'Heebo', system-ui, sans-serif;
+        }
+        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+        body {
+            background: var(--bg);
+            color: var(--paper);
+            font-family: var(--sans);
+            font-weight: 400;
+            line-height: 1.65;
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding-top: 50px;
+            background-image:
+                radial-gradient(ellipse at 20% 0%, rgba(255,0,238,0.25) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 100%, rgba(0,234,255,0.25) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(157,79,255,0.15) 0%, transparent 70%);
+            background-attachment: fixed;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: linear-gradient(rgba(0,234,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,234,255,0.04) 1px, transparent 1px);
+            background-size: 32px 32px;
+            pointer-events: none;
+            z-index: 1;
+        }
+        ::selection { background: var(--magenta); color: var(--paper); }
+        :focus-visible { outline: 3px solid var(--lime); outline-offset: 4px; }
+
+        .vnav { position: fixed; top: 0; inset-inline-start: 0; inset-inline-end: 0; z-index: 9999; background: var(--bg); color: var(--paper); padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; font-family: var(--sans); font-size: 13px; font-weight: 500; border-bottom: 2px solid var(--magenta); box-shadow: 0 0 20px rgba(255,0,238,0.4); }
+        .vnav a { color: var(--paper); text-decoration: none; padding: 6px 14px; border-radius: 999px; border: 1px solid var(--cyan); transition: all 0.2s; }
+        .vnav a:hover, .vnav a:focus-visible { background: var(--cyan); color: var(--bg); box-shadow: 0 0 20px var(--cyan); }
+        .vnav-arrows { display: flex; gap: 8px; }
+        .vnav-label { opacity: 0.85; font-size: 12px; white-space: nowrap; }
+        .vnav-label strong { color: var(--lime); font-weight: 900; margin-inline-end: 4px; text-shadow: 0 0 10px var(--lime); }
+        @media (max-width: 640px) { .vnav-label { display: none; } body { padding-top: 46px; } }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+
+        /* Marquee */
+        .marquee {
+            background: var(--bg-2);
+            color: var(--lime);
+            padding: 10px 0;
+            overflow: hidden;
+            border-block: 2px solid var(--magenta);
+            position: relative;
+            z-index: 2;
+        }
+        .marquee-track {
+            display: inline-flex;
+            gap: 32px;
+            white-space: nowrap;
+            font-family: var(--pixel);
+            font-size: 1.4rem;
+            animation: scroll-mq 30s linear infinite;
+            padding-inline-start: 32px;
+        }
+        .marquee-track .star { color: var(--magenta); }
+        @keyframes scroll-mq { from { transform: translateX(0); } to { transform: translateX(50%); } }
+
+        /* HERO */
+        #hero {
+            position: relative;
+            padding: 60px 24px 100px;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .blink {
+            animation: blink 1s steps(2) infinite;
+            display: inline-block;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        .badge-row {
+            display: inline-flex;
+            gap: 12px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .neon-badge {
+            font-family: var(--pixel);
+            font-size: 1.2rem;
+            color: var(--paper);
+            border: 2px solid var(--cyan);
+            padding: 6px 16px;
+            background: rgba(0,234,255,0.1);
+            box-shadow: 0 0 14px rgba(0,234,255,0.5), inset 0 0 14px rgba(0,234,255,0.15);
+            border-radius: 999px;
+        }
+        .neon-badge:nth-child(2) { border-color: var(--magenta); box-shadow: 0 0 14px rgba(255,0,238,0.5), inset 0 0 14px rgba(255,0,238,0.15); background: rgba(255,0,238,0.1); }
+        .neon-badge:nth-child(3) { border-color: var(--lime); box-shadow: 0 0 14px rgba(182,255,0,0.5), inset 0 0 14px rgba(182,255,0,0.15); background: rgba(182,255,0,0.1); }
+
+        h1 {
+            font-family: var(--sans);
+            font-weight: 900;
+            font-size: clamp(3rem, 11vw, 8rem);
+            line-height: 0.95;
+            letter-spacing: -0.04em;
+            margin-bottom: 16px;
+            text-shadow:
+                0 0 30px rgba(255,0,238,0.6),
+                0 0 60px rgba(0,234,255,0.4);
+        }
+        h1 .gradient {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+        h1 .gradient-2 {
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+            font-style: italic;
+        }
+
+        .hero-sub {
+            font-size: 1.3rem;
+            font-weight: 700;
+            line-height: 1.5;
+            margin: 0 auto 32px;
+            max-width: 580px;
+            color: var(--paper);
+        }
+        .hero-sub mark { background: var(--magenta); color: var(--paper); padding: 0 6px; }
+        .hero-sub .cyan { color: var(--cyan); }
+
+        /* HERO photo with frame */
+        .photo-frame {
+            position: relative;
+            width: 320px;
+            aspect-ratio: 4 / 5;
+            margin: 0 auto 36px;
+            background: var(--gradient-1);
+            padding: 6px;
+            border-radius: 12px;
+            box-shadow: 0 0 50px rgba(255,0,238,0.5), 0 0 100px rgba(0,234,255,0.3);
+            transform: rotate(-2deg);
+            animation: glowPulse 3s ease-in-out infinite;
+        }
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 50px rgba(255,0,238,0.5), 0 0 100px rgba(0,234,255,0.3); }
+            50% { box-shadow: 0 0 80px rgba(255,0,238,0.7), 0 0 140px rgba(0,234,255,0.4); }
+        }
+        .photo-frame img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 8px;
+        }
+        .photo-corner {
+            position: absolute;
+            font-family: var(--pixel);
+            font-size: 1.3rem;
+            color: var(--lime);
+            text-shadow: 0 0 8px var(--lime);
+            white-space: nowrap;
+        }
+        .photo-corner.tl { top: -28px; inset-inline-start: -10px; transform: rotate(-8deg); }
+        .photo-corner.br { bottom: -28px; inset-inline-end: -10px; color: var(--magenta); text-shadow: 0 0 8px var(--magenta); transform: rotate(8deg); }
+
+        /* BUTTONS */
+        .button-row { display: inline-flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-height: 60px;
+            padding: 16px 40px;
+            font-family: var(--sans);
+            font-size: 1.1rem;
+            font-weight: 900;
+            text-decoration: none;
+            cursor: pointer;
+            border: 3px solid var(--paper);
+            background: var(--gradient-1);
+            color: var(--paper);
+            border-radius: 999px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s;
+            box-shadow: 0 0 24px rgba(255,0,238,0.5);
+            text-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+        .btn::before {
+            content: '';
+            position: absolute;
+            inset: 4px;
+            border: 1px solid rgba(255,255,255,0.4);
+            border-radius: inherit;
+            pointer-events: none;
+        }
+        .btn:hover, .btn:focus-visible {
+            transform: translateY(-3px) scale(1.04);
+            box-shadow: 0 0 40px rgba(255,0,238,0.8);
+        }
+        .btn-cyan { background: var(--gradient-3); box-shadow: 0 0 24px rgba(0,234,255,0.5); }
+        .btn-cyan:hover, .btn-cyan:focus-visible { box-shadow: 0 0 40px rgba(0,234,255,0.8); }
+        .btn-lime { background: var(--gradient-2); color: var(--bg); box-shadow: 0 0 24px rgba(182,255,0,0.5); }
+        .btn-lime:hover, .btn-lime:focus-visible { box-shadow: 0 0 40px rgba(182,255,0,0.8); }
+
+        /* SECTIONS */
+        section.block { padding: 90px 0; position: relative; z-index: 2; }
+
+        .section-label {
+            font-family: var(--retro);
+            font-size: 0.7rem;
+            color: var(--lime);
+            letter-spacing: 0.15em;
+            margin-bottom: 16px;
+            display: block;
+            text-shadow: 0 0 10px var(--lime);
+        }
+
+        h2 {
+            font-family: var(--sans);
+            font-weight: 900;
+            font-size: clamp(2.2rem, 5vw, 3.6rem);
+            line-height: 1.05;
+            margin-bottom: 48px;
+            text-align: center;
+        }
+        h2 .magenta { color: var(--magenta); text-shadow: 0 0 20px rgba(255,0,238,0.6); }
+        h2 .cyan { color: var(--cyan); text-shadow: 0 0 20px rgba(0,234,255,0.6); }
+        h2 .lime { color: var(--lime); text-shadow: 0 0 20px rgba(182,255,0,0.6); }
+
+        /* ABOUT */
+        .about-text { max-width: 700px; margin: 0 auto; text-align: center; }
+        .about-text p {
+            font-size: 1.18rem;
+            line-height: 1.85;
+            margin-bottom: 22px;
+        }
+        .about-text .hl { background: var(--magenta); color: var(--paper); padding: 0 6px; }
+        .about-text .lime { color: var(--lime); font-weight: 700; text-shadow: 0 0 10px var(--lime); }
+
+        /* MODULES */
+        .modules {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+        .module {
+            background: rgba(255,255,255,0.05);
+            border: 2px solid var(--cyan);
+            border-radius: 16px;
+            padding: 26px 24px;
+            backdrop-filter: blur(6px);
+            transition: all 0.3s;
+            position: relative;
+            box-shadow: 0 0 16px rgba(0,234,255,0.2), inset 0 0 16px rgba(0,234,255,0.05);
+        }
+        .module:nth-child(3n+1) { border-color: var(--magenta); box-shadow: 0 0 16px rgba(255,0,238,0.2), inset 0 0 16px rgba(255,0,238,0.05); }
+        .module:nth-child(3n+2) { border-color: var(--lime); box-shadow: 0 0 16px rgba(182,255,0,0.2), inset 0 0 16px rgba(182,255,0,0.05); }
+        .module:hover, .module:focus-within {
+            transform: translateY(-4px);
+            box-shadow: 0 0 32px rgba(0,234,255,0.5);
+        }
+        .module:nth-child(3n+1):hover { box-shadow: 0 0 32px rgba(255,0,238,0.5); }
+        .module:nth-child(3n+2):hover { box-shadow: 0 0 32px rgba(182,255,0,0.5); }
+
+        .module-num {
+            font-family: var(--retro);
+            font-size: 1.2rem;
+            color: var(--cyan);
+            margin-bottom: 12px;
+            text-shadow: 0 0 8px var(--cyan);
+        }
+        .module:nth-child(3n+1) .module-num { color: var(--magenta); text-shadow: 0 0 8px var(--magenta); }
+        .module:nth-child(3n+2) .module-num { color: var(--lime); text-shadow: 0 0 8px var(--lime); }
+
+        .module h3 {
+            font-size: 1.5rem;
+            font-weight: 900;
+            margin-bottom: 8px;
+            color: var(--paper);
+        }
+        .module p { font-size: 0.95rem; color: var(--paper); opacity: 0.85; line-height: 1.6; }
+
+        /* DETAILS */
+        .details-card {
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(0,0,0,0.4);
+            border: 2px solid var(--magenta);
+            border-radius: 20px;
+            padding: 36px 32px;
+            box-shadow: 0 0 30px rgba(255,0,238,0.3);
+            backdrop-filter: blur(8px);
+        }
+        .details-list { list-style: none; }
+        .details-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(0,234,255,0.25);
+            gap: 20px;
+        }
+        .details-list li:last-child { border-bottom: none; }
+        .details-list .k {
+            font-family: var(--pixel);
+            color: var(--cyan);
+            font-size: 1.4rem;
+            text-shadow: 0 0 6px var(--cyan);
+            white-space: nowrap;
+        }
+        .details-list .v { text-align: end; font-weight: 500; }
+        .details-list .v strong { color: var(--magenta); font-weight: 700; }
+        .details-list .v a { color: var(--lime); text-decoration: none; border-bottom: 1px dashed currentColor; }
+
+        /* CTA */
+        #cta { text-align: center; }
+        #cta .lead { font-size: 1.25rem; max-width: 600px; margin: 0 auto 40px; line-height: 1.65; font-weight: 500; }
+
+        /* FOOTER */
+        footer {
+            padding: 60px 24px;
+            text-align: center;
+            border-top: 2px solid var(--magenta);
+            position: relative;
+            z-index: 2;
+            background: var(--bg-2);
+        }
+        footer .quote {
+            font-family: var(--sans);
+            font-weight: 900;
+            font-size: 1.5rem;
+            line-height: 1.3;
+            margin-bottom: 14px;
+        }
+        footer .quote .grad {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        footer .meta {
+            font-family: var(--pixel);
+            font-size: 1.1rem;
+            color: var(--cyan);
+            text-shadow: 0 0 6px var(--cyan);
+            opacity: 0.85;
+        }
+
+        @media (max-width: 720px) {
+            section.block { padding: 70px 0; }
+            .button-row { flex-direction: column; align-items: stretch; }
+            .btn { width: 100%; }
+            .photo-frame { width: 260px; }
+            .details-list li { flex-direction: column; align-items: flex-start; gap: 4px; }
+            .details-list .v { text-align: start; }
+            .marquee-track { font-size: 1.1rem; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: 0.001s !important; transition-duration: 0.001s !important; }
+            .marquee-track, .blink, .photo-frame { animation: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="vnav" aria-label="ניווט בין גרסאות">
+        <a href="index.html">★ כל הגרסאות</a>
+        <span class="vnav-label"><strong>6/6</strong> · ניאון Y2K (רטרו ווב)</span>
+        <div class="vnav-arrows">
+            <a href="v5.html" rel="prev">הקודמת</a>
+            <a href="v1.html" rel="next">הבאה (חזרה לראשונה)</a>
+        </div>
+    </nav>
+
+    <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+            <span>&gt; LOADING_FUN.EXE <span class="star">★</span></span>
+            <span>די להיות רציני <span class="star">★</span></span>
+            <span>הילד שבך מחכה <span class="star">★</span></span>
+            <span>PRESS START <span class="star">★</span></span>
+            <span>CTRL + ALT + שחרר <span class="star">★</span></span>
+            <span>בואו לפרוק <span class="star">★</span></span>
+            <span>&gt; LOADING_FUN.EXE <span class="star">★</span></span>
+            <span>די להיות רציני <span class="star">★</span></span>
+            <span>הילד שבך מחכה <span class="star">★</span></span>
+            <span>PRESS START <span class="star">★</span></span>
+            <span>CTRL + ALT + שחרר <span class="star">★</span></span>
+            <span>בואו לפרוק <span class="star">★</span></span>
+        </div>
+    </div>
+
+    <main>
+
+    <section id="hero">
+        <div class="container">
+            <div class="badge-row">
+                <span class="neon-badge">★ NEW DROP</span>
+                <span class="neon-badge">SEPT 2026</span>
+                <span class="neon-badge">★ נטע ★</span>
+            </div>
+
+            <h1><span class="gradient">החופש</span> <span class="gradient-2">לשחק</span></h1>
+
+            <div class="photo-frame">
+                <span class="photo-corner tl">★ נטע ★</span>
+                <img src="assets/netta.jpg" alt="נטע — מנחת הקורס" loading="eager" width="800" height="1000">
+                <span class="photo-corner br">~ Sydney ~</span>
+            </div>
+
+            <p class="hero-sub">
+                שמונה מפגשים. <mark>אפס הסברים.</mark> <span class="cyan blink">לחצי כאן ←</span> מסיבה במסווה של קורס.
+            </p>
+
+            <div class="button-row">
+                <a href="#cta" class="btn">להרשמה ★</a>
+                <a href="#about" class="btn btn-cyan">מה זה הדבר הזה?</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="block">
+        <div class="container">
+            <div style="text-align:center;"><span class="section-label">[ INTRO.TXT ]</span></div>
+            <h2>להפסיק להיות <span class="magenta">מבוגרים</span></h2>
+
+            <div class="about-text">
+                <p>אי שם בדרך, רובנו <span class="hl">שכחנו לשחק</span>. נהיינו רציניים. <span class="lime">איזה באסה.</span></p>
+                <p>זה הקורס. הזמנה לחזור — בלי שיפוט, בלי "לעשות נכון". שמונה מפגשים שבועיים של תנועה, קול, יצירה, מגע מודע, צחוק, ולפעמים גם דממה.</p>
+                <p>זה לא פיתוח אישי. זה שעתיים בשבוע שאת/ה לא צריך/ה להיות שום דבר. <span class="hl">פשוט להופיע.</span></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="block">
+        <div class="container">
+            <div style="text-align:center;"><span class="section-label">[ LEVELS.DAT ]</span></div>
+            <h2>שמונה <span class="cyan">לבלים</span> במשחק</h2>
+
+            <div class="modules">
+                <article class="module"><div class="module-num">LV.01</div><h3>נחיתה</h3><p>הקרקע, הנשימה, ההיכרות.</p></article>
+                <article class="module"><div class="module-num">LV.02</div><h3>תזיזו</h3><p>תנועה ספונטנית. הגוף יודע.</p></article>
+                <article class="module"><div class="module-num">LV.03</div><h3>קול</h3><p>צליל, ייללה, צחוק. שחרור.</p></article>
+                <article class="module"><div class="module-num">LV.04</div><h3>ללכלך</h3><p>חומרים, צבעים, ידיים. בלי תוצר.</p></article>
+                <article class="module"><div class="module-num">LV.05</div><h3>מגע</h3><p>תקשורת לא־מילולית, מגע מודע.</p></article>
+                <article class="module"><div class="module-num">LV.06</div><h3>ילד/ה</h3><p>פגישה רכה עם החלק השובב.</p></article>
+                <article class="module"><div class="module-num">LV.07</div><h3>היסטריה</h3><p>פראיות, רעש, שמחה. בלי בלמים.</p></article>
+                <article class="module"><div class="module-num">LV.08</div><h3>חזרה</h3><p>BOSS LEVEL. סגירת מעגל.</p></article>
+            </div>
+        </div>
+    </section>
+
+    <section class="block">
+        <div class="container">
+            <div style="text-align:center;"><span class="section-label">[ INFO.SYS ]</span></div>
+            <h2>הפרטים <span class="lime">המעשיים</span></h2>
+
+            <div class="details-card">
+                <ul class="details-list">
+                    <li><span class="k">מתי</span><span class="v"><strong>ספטמבר 2026</strong> · יום ושעה ייקבעו</span></li>
+                    <li><span class="k">איפה</span><span class="v"><a href="https://maps.google.com/?q=14+Gloucester+Ave,+West+Pymble+NSW+2073" target="_blank" rel="noopener" lang="en">14 Gloucester Ave, West Pymble NSW 2073</a></span></li>
+                    <li><span class="k">כמה</span><span class="v"><strong>8 מפגשים</strong> שבועיים</span></li>
+                    <li><span class="k">מי</span><span class="v">עד <strong>16 שחקנים/ות</strong> · נשים וגברים</span></li>
+                    <li><span class="k">להביא</span><span class="v">בגדים שלא אכפת ללכלך · בקבוק מים</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="cta" class="block">
+        <div class="container">
+            <div style="text-align:center;"><span class="section-label">[ START.EXE ]</span></div>
+            <h2>★ <span class="magenta">PRESS START</span> ★</h2>
+            <p class="lead">המקומות מוגבלים. אם משהו בך אמר "כן" — שלח/י הודעה ונדבר. אני מעדיפה להכיר לפני, ולא במהלך.</p>
+            <div class="button-row">
+                <a id="whatsapp-button" href="#" class="btn btn-lime" rel="noopener">→ WHATSAPP</a>
+                <a id="email-button" href="#" class="btn btn-cyan">→ E-MAIL</a>
+            </div>
+        </div>
+    </section>
+
+    </main>
+
+    <footer>
+        <div class="quote">"החיים קצרים מדי בשביל להיות <span class="grad">מבוגר/ת.</span>"</div>
+        <div class="meta">&gt; HACOFESH_LESACHEK.EXE_2026</div>
+    </footer>
+
+    <script>
+        const CONFIG = { whatsappNumber: '972501234567', emailAddress: 'netta@example.com', courseName: 'החופש לשחק' };
+        const isPlaceholderWA = CONFIG.whatsappNumber === '972501234567';
+        const isPlaceholderE = CONFIG.emailAddress === 'netta@example.com';
+        document.getElementById('whatsapp-button').addEventListener('click', (e) => {
+            e.preventDefault();
+            if (isPlaceholderWA) { alert('המספר עדיין לא הוגדר.'); return; }
+            const msg = encodeURIComponent(`היי נטע! ראיתי את אתר הקורס "${CONFIG.courseName}".`);
+            window.open(`https://wa.me/${CONFIG.whatsappNumber}?text=${msg}`, '_blank', 'noopener');
+        });
+        document.getElementById('email-button').addEventListener('click', (e) => {
+            e.preventDefault();
+            if (isPlaceholderE) { alert('כתובת המייל עדיין לא הוגדרה.'); return; }
+            window.location.href = `mailto:${CONFIG.emailAddress}?subject=${encodeURIComponent(CONFIG.courseName)}`;
+        });
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const id = link.getAttribute('href');
+                if (id.length < 2) return;
+                const t = document.querySelector(id);
+                if (!t) return;
+                e.preventDefault();
+                t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
+</body>
+</html>

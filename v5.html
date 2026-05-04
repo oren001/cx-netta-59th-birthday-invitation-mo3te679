@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f0e4cc">
+    <title>החופש לשחק — נטע · גרסה 5</title>
+    <meta name="description" content="קורס סדנאי בהנחיית נטע. גרסה: פולק / חם ואדמתי.">
+    <meta property="og:title" content="החופש לשחק — נטע">
+    <meta property="og:image" content="assets/netta.jpg">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f0e4cc'/%3E%3Ccircle cx='32' cy='32' r='14' fill='%23c5572b'/%3E%3Cg stroke='%23c5572b' stroke-width='3' stroke-linecap='round'%3E%3Cline x1='32' y1='8' x2='32' y2='14'/%3E%3Cline x1='32' y1='50' x2='32' y2='56'/%3E%3Cline x1='8' y1='32' x2='14' y2='32'/%3E%3Cline x1='50' y1='32' x2='56' y2='32'/%3E%3C/g%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Heebo:wght@300;400;500;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        :root {
+            --cream: #f0e4cc;
+            --cream-deep: #e6d6b0;
+            --terracotta: #c5572b;
+            --terracotta-deep: #9b3f1a;
+            --sage: #6b8e5a;
+            --sage-deep: #4d6b3f;
+            --ochre: #d9a646;
+            --olive: #595d3a;
+            --ink: #3a2818;
+            --ink-soft: #6b5644;
+            --serif: 'Cormorant Garamond', 'Times New Roman', serif;
+            --hand: 'Caveat', cursive;
+            --sans: 'Heebo', system-ui, sans-serif;
+        }
+        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+        body {
+            background: var(--cream);
+            color: var(--ink);
+            font-family: var(--serif);
+            font-weight: 400;
+            line-height: 1.7;
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding-top: 50px;
+        }
+        ::selection { background: var(--terracotta); color: var(--cream); }
+        :focus-visible { outline: 2px solid var(--terracotta); outline-offset: 4px; }
+
+        .vnav { position: fixed; top: 0; inset-inline-start: 0; inset-inline-end: 0; z-index: 9999; background: var(--ink); color: var(--cream); padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; font-family: var(--sans); font-size: 13px; font-weight: 500; }
+        .vnav a { color: var(--cream); text-decoration: none; padding: 6px 14px; border-radius: 999px; border: 1px solid rgba(240,228,204,0.35); transition: background 0.2s; }
+        .vnav a:hover, .vnav a:focus-visible { background: rgba(217,166,70,0.3); }
+        .vnav-arrows { display: flex; gap: 8px; }
+        .vnav-label { opacity: 0.85; font-size: 12px; white-space: nowrap; }
+        .vnav-label strong { color: var(--ochre); font-weight: 900; margin-inline-end: 4px; }
+        @media (max-width: 640px) { .vnav-label { display: none; } body { padding-top: 46px; } }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        /* Decorative SVG sun/sprout/heart helpers */
+        .sun {
+            display: inline-block;
+            color: var(--terracotta);
+        }
+        .ornament-row {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            color: var(--terracotta);
+            margin-bottom: 16px;
+            opacity: 0.6;
+        }
+
+        /* HERO */
+        #hero {
+            position: relative;
+            padding: 80px 24px 100px;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .arch-frame {
+            position: relative;
+            max-width: 360px;
+            aspect-ratio: 4 / 5;
+            margin: 0 auto 40px;
+            border-radius: 50% 50% 8% 8% / 60% 60% 8% 8%;
+            overflow: hidden;
+            background: var(--terracotta);
+            border: 3px solid var(--ink);
+            box-shadow: 0 24px 50px rgba(58,40,24,0.18);
+        }
+        .arch-frame img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .arch-frame::after {
+            content: '';
+            position: absolute;
+            inset: 12px 12px 0 12px;
+            border-radius: 50% 50% 0 0 / 80% 80% 0 0;
+            border: 1px solid rgba(255,255,255,0.35);
+            pointer-events: none;
+        }
+
+        /* Decorative side ornaments */
+        .side-orn {
+            position: absolute;
+            top: 80px;
+            color: var(--sage);
+            opacity: 0.7;
+            pointer-events: none;
+            display: none;
+        }
+        .side-orn.left { inset-inline-start: 5%; transform: rotate(-15deg); }
+        .side-orn.right { inset-inline-end: 5%; transform: rotate(15deg); }
+        @media (min-width: 900px) { .side-orn { display: block; } }
+
+        .hero-eyebrow {
+            font-family: var(--hand);
+            font-size: 1.6rem;
+            color: var(--terracotta);
+            margin-bottom: 12px;
+            transform: rotate(-1deg);
+            display: inline-block;
+        }
+
+        h1 {
+            font-family: var(--serif);
+            font-weight: 500;
+            font-size: clamp(3rem, 8vw, 6rem);
+            line-height: 1.05;
+            margin-bottom: 18px;
+            color: var(--ink);
+        }
+        h1 .it {
+            font-style: italic;
+            font-weight: 400;
+            color: var(--terracotta);
+        }
+
+        .hero-tagline {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+            color: var(--sage-deep);
+            margin: 0 auto 28px;
+            max-width: 540px;
+            line-height: 1.4;
+        }
+
+        .hero-meta {
+            display: inline-flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 14px 28px;
+            border-top: 1px solid var(--ink);
+            border-bottom: 1px solid var(--ink);
+            font-family: var(--sans);
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-bottom: 36px;
+        }
+        .hero-meta span { color: var(--ink-soft); }
+        .hero-meta strong { color: var(--terracotta-deep); font-weight: 700; margin-inline-end: 4px; }
+
+        .button-row { display: inline-flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-height: 54px;
+            padding: 14px 38px;
+            font-family: var(--sans);
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            text-decoration: none;
+            border: 2px solid var(--ink);
+            background: transparent;
+            color: var(--ink);
+            cursor: pointer;
+            border-radius: 999px;
+            transition: all 0.3s;
+        }
+        .btn-primary { background: var(--terracotta); color: var(--cream); border-color: var(--terracotta); }
+        .btn-primary:hover, .btn-primary:focus-visible { background: var(--terracotta-deep); border-color: var(--terracotta-deep); transform: translateY(-2px); box-shadow: 0 10px 24px rgba(155,63,26,0.3); }
+        .btn:hover, .btn:focus-visible { background: var(--ink); color: var(--cream); transform: translateY(-2px); }
+
+        /* SECTIONS */
+        section.block { padding: 90px 0; position: relative; }
+
+        .section-eyebrow {
+            font-family: var(--hand);
+            font-size: 1.6rem;
+            color: var(--terracotta);
+            margin-bottom: 8px;
+            text-align: center;
+            transform: rotate(-1deg);
+            display: block;
+        }
+        h2 {
+            font-family: var(--serif);
+            font-weight: 500;
+            font-size: clamp(2.2rem, 5vw, 3.4rem);
+            line-height: 1.1;
+            margin-bottom: 56px;
+            text-align: center;
+        }
+        h2 .it { font-style: italic; color: var(--terracotta); font-weight: 400; }
+
+        /* ABOUT */
+        #about { background: var(--cream-deep); border-top: 1px solid rgba(58,40,24,0.15); border-bottom: 1px solid rgba(58,40,24,0.15); }
+        .about-text { max-width: 720px; margin: 0 auto; text-align: center; }
+        .about-text p {
+            font-size: 1.2rem;
+            line-height: 1.85;
+            margin-bottom: 22px;
+            color: var(--ink);
+        }
+        .about-text p:last-child { color: var(--ink-soft); }
+        .about-text .hl { color: var(--terracotta); font-style: italic; font-weight: 500; }
+        .about-text .sage { color: var(--sage-deep); font-style: italic; font-weight: 500; }
+
+        .pull-quote {
+            font-family: var(--hand);
+            font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+            color: var(--terracotta);
+            text-align: center;
+            max-width: 680px;
+            margin: 56px auto 0;
+            line-height: 1.3;
+            transform: rotate(-1deg);
+        }
+
+        /* CURRICULUM */
+        .modules {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 28px;
+        }
+        .module {
+            background: var(--cream);
+            padding: 32px 26px 28px;
+            border: 1px solid rgba(58,40,24,0.15);
+            border-radius: 200px 200px 12px 12px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+        .module:hover, .module:focus-within {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(58,40,24,0.12);
+            border-color: var(--terracotta);
+        }
+        .module-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px; height: 48px;
+            border-radius: 50%;
+            background: var(--terracotta);
+            color: var(--cream);
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 1.4rem;
+            margin: 0 auto 14px;
+        }
+        .module:nth-child(2) .module-num, .module:nth-child(5) .module-num, .module:nth-child(8) .module-num { background: var(--sage); }
+        .module:nth-child(3) .module-num, .module:nth-child(6) .module-num { background: var(--ochre); color: var(--ink); }
+        .module h3 {
+            font-family: var(--serif);
+            font-weight: 500;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--ink);
+        }
+        .module p {
+            font-family: var(--sans);
+            font-weight: 400;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--ink-soft);
+        }
+
+        /* DETAILS */
+        #details { background: var(--cream-deep); border-top: 1px solid rgba(58,40,24,0.15); border-bottom: 1px solid rgba(58,40,24,0.15); }
+        .details-card {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--cream);
+            border: 2px solid var(--ink);
+            border-radius: 24px;
+            padding: 40px 36px;
+            position: relative;
+        }
+        .details-card::before {
+            content: '';
+            position: absolute;
+            top: -2px; bottom: -2px; inset-inline-start: -8px; inset-inline-end: -8px;
+            border: 2px solid var(--terracotta);
+            border-radius: 24px;
+            z-index: -1;
+            opacity: 0.5;
+        }
+        .details-list { list-style: none; }
+        .details-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(58,40,24,0.15);
+            gap: 24px;
+        }
+        .details-list li:last-child { border-bottom: none; }
+        .details-list .k {
+            font-family: var(--hand);
+            color: var(--terracotta);
+            font-size: 1.5rem;
+            white-space: nowrap;
+        }
+        .details-list .v {
+            font-family: var(--sans);
+            font-weight: 500;
+            text-align: end;
+            color: var(--ink);
+            font-size: 1rem;
+        }
+        .details-list .v strong { color: var(--terracotta-deep); font-weight: 700; }
+        .details-list .v a { color: var(--sage-deep); text-decoration: none; border-bottom: 1px dashed currentColor; }
+
+        /* CTA */
+        #cta { text-align: center; }
+        #cta h2 { margin-bottom: 22px; }
+        #cta .lead {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto 36px;
+            color: var(--ink-soft);
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 60px 24px;
+            text-align: center;
+            background: var(--ink);
+            color: var(--cream);
+            position: relative;
+        }
+        footer .quote {
+            font-family: var(--hand);
+            font-size: 1.8rem;
+            line-height: 1.3;
+            margin-bottom: 18px;
+            color: var(--ochre);
+            transform: rotate(-1deg);
+            display: inline-block;
+        }
+        footer .meta { font-family: var(--sans); font-size: 0.85rem; opacity: 0.7; }
+
+        @media (max-width: 720px) {
+            section.block { padding: 70px 0; }
+            .button-row { flex-direction: column; align-items: center; width: 100%; }
+            .btn { width: 100%; max-width: 320px; }
+            .details-list li { flex-direction: column; align-items: flex-start; gap: 4px; }
+            .details-list .v { text-align: start; }
+        }
+
+        @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.001s !important; transition-duration: 0.001s !important; } }
+    </style>
+</head>
+<body>
+
+    <nav class="vnav" aria-label="ניווט בין גרסאות">
+        <a href="index.html">★ כל הגרסאות</a>
+        <span class="vnav-label"><strong>5/6</strong> · פולק חם (טרקוטה + מרווה)</span>
+        <div class="vnav-arrows">
+            <a href="v4.html" rel="prev">הקודמת</a>
+            <a href="v6.html" rel="next">הבאה</a>
+        </div>
+    </nav>
+
+    <main>
+
+    <section id="hero">
+        <svg class="side-orn left" width="80" height="240" viewBox="0 0 80 240" fill="none" aria-hidden="true">
+            <path d="M40 0 Q60 30 40 60 Q20 90 40 120 Q60 150 40 180 Q20 210 40 240" stroke="currentColor" stroke-width="2" fill="none"/>
+            <circle cx="40" cy="60" r="6" fill="currentColor"/>
+            <circle cx="40" cy="120" r="6" fill="currentColor"/>
+            <circle cx="40" cy="180" r="6" fill="currentColor"/>
+        </svg>
+        <svg class="side-orn right" width="80" height="240" viewBox="0 0 80 240" fill="none" aria-hidden="true">
+            <path d="M40 0 Q20 30 40 60 Q60 90 40 120 Q20 150 40 180 Q60 210 40 240" stroke="currentColor" stroke-width="2" fill="none"/>
+            <circle cx="40" cy="60" r="6" fill="currentColor"/>
+            <circle cx="40" cy="120" r="6" fill="currentColor"/>
+            <circle cx="40" cy="180" r="6" fill="currentColor"/>
+        </svg>
+
+        <div class="container">
+            <div class="ornament-row" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><circle cx="10" cy="10" r="3"/><g stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="10" y1="2" x2="10" y2="5"/><line x1="10" y1="15" x2="10" y2="18"/><line x1="2" y1="10" x2="5" y2="10"/><line x1="15" y1="10" x2="18" y2="10"/><line x1="4" y1="4" x2="6" y2="6"/><line x1="14" y1="14" x2="16" y2="16"/><line x1="4" y1="16" x2="6" y2="14"/><line x1="14" y1="6" x2="16" y2="4"/></g></svg>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><circle cx="10" cy="10" r="3"/></svg>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><circle cx="10" cy="10" r="3"/><g stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="10" y1="2" x2="10" y2="5"/><line x1="10" y1="15" x2="10" y2="18"/><line x1="2" y1="10" x2="5" y2="10"/><line x1="15" y1="10" x2="18" y2="10"/><line x1="4" y1="4" x2="6" y2="6"/><line x1="14" y1="14" x2="16" y2="16"/><line x1="4" y1="16" x2="6" y2="14"/><line x1="14" y1="6" x2="16" y2="4"/></g></svg>
+            </div>
+
+            <div class="hero-eyebrow">~ קורס חדש בהנחיית נטע ~</div>
+
+            <div class="arch-frame">
+                <img src="assets/netta.jpg" alt="נטע — מנחת הקורס" loading="eager" width="800" height="1000">
+            </div>
+
+            <h1>החופש <span class="it">לשחק.</span></h1>
+            <div class="hero-tagline">שמונה מפגשים. אפס הסברים. מסיבה במסווה של קורס.</div>
+
+            <div class="hero-meta">
+                <span><strong>פתיחה</strong>ספטמבר 2026</span>
+                <span><strong>8 מפגשים</strong>שבועיים</span>
+                <span><strong>קבוצה</strong>עד 16</span>
+            </div>
+
+            <div class="button-row">
+                <a href="#cta" class="btn btn-primary">להרשמה</a>
+                <a href="#about" class="btn">קצת יותר</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="block">
+        <div class="container">
+            <span class="section-eyebrow">~ ההזמנה ~</span>
+            <h2>להפסיק להיות <span class="it">מבוגרים.</span></h2>
+
+            <div class="about-text">
+                <p>אי שם בדרך, רובנו <span class="hl">שכחנו לשחק</span>. הפסקנו לרקוד במטבח, להמציא מילים, לקרקר בלי סיבה. נהיינו רציניים.</p>
+                <p>הקורס הזה הוא הזמנה לחזור — בלי שיפוט, בלי "צריך", בלי לעשות "נכון". במהלך שמונה מפגשים נחקור יחד תנועה ספונטנית, קול, יצירה, מגע מודע, צחוק, ולפעמים גם <span class="sage">דממה</span>.</p>
+                <p>מרחב חם, מקבל ומשחקי, לכל מי שמרגיש/ה שמשהו בו מבקש להישחרר. נשים וגברים, בכל גיל.</p>
+            </div>
+
+            <div class="pull-quote">"החיים קצרים מדי בשביל להיות מבוגר/ת."</div>
+        </div>
+    </section>
+
+    <section id="curriculum" class="block">
+        <div class="container">
+            <span class="section-eyebrow">~ המסע ~</span>
+            <h2>שמונה <span class="it">משחקים</span> במסע.</h2>
+
+            <div class="modules">
+                <article class="module"><div class="module-num">1</div><h3>נחיתה</h3><p>הקרקע, הנשימה, ההיכרות.</p></article>
+                <article class="module"><div class="module-num">2</div><h3>תנועה</h3><p>תנועה ספונטנית. הגוף יודע.</p></article>
+                <article class="module"><div class="module-num">3</div><h3>קול</h3><p>צליל, ייללה, צחוק. כל מה שהושתק.</p></article>
+                <article class="module"><div class="module-num">4</div><h3>ללכלך</h3><p>חומרים, צבעים, ידיים. בלי תוצר.</p></article>
+                <article class="module"><div class="module-num">5</div><h3>מגע</h3><p>תקשורת לא־מילולית, מגע מודע.</p></article>
+                <article class="module"><div class="module-num">6</div><h3>ילד/ה</h3><p>פגישה רכה עם החלק השובב.</p></article>
+                <article class="module"><div class="module-num">7</div><h3>היסטריה</h3><p>פראיות, רעש, שמחה גועשת.</p></article>
+                <article class="module"><div class="module-num">8</div><h3>חזרה</h3><p>סגירת מעגל. מה לוקחים הביתה.</p></article>
+            </div>
+        </div>
+    </section>
+
+    <section id="details" class="block">
+        <div class="container">
+            <span class="section-eyebrow">~ פרטים ~</span>
+            <h2>המסגרת <span class="it">בקצרה.</span></h2>
+
+            <div class="details-card">
+                <ul class="details-list">
+                    <li><span class="k">מתי</span><span class="v"><strong>ספטמבר 2026</strong> · יום ושעה ייקבעו</span></li>
+                    <li><span class="k">איפה</span><span class="v"><a href="https://maps.google.com/?q=14+Gloucester+Ave,+West+Pymble+NSW+2073" target="_blank" rel="noopener" lang="en">14 Gloucester Ave, West Pymble NSW 2073</a></span></li>
+                    <li><span class="k">משך</span><span class="v"><strong>8 מפגשים</strong> שבועיים</span></li>
+                    <li><span class="k">קבוצה</span><span class="v">עד <strong>16 משתתפים/ות</strong> · נשים וגברים</span></li>
+                    <li><span class="k">להביא</span><span class="v">בגדים נוחים · בקבוק מים · לב פתוח</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="cta" class="block">
+        <div class="container">
+            <span class="section-eyebrow">~ הרשמה ~</span>
+            <h2>בואו <span class="it">לשחק.</span></h2>
+            <p class="lead">המקומות מוגבלים. אם משהו בך אמר "כן" — שלח/י הודעה ונדבר. אני מעדיפה להכיר לפני, ולא במהלך.</p>
+            <div class="button-row">
+                <a id="whatsapp-button" href="#" class="btn btn-primary" rel="noopener">הודעה בוואטסאפ</a>
+                <a id="email-button" href="#" class="btn">או מייל</a>
+            </div>
+        </div>
+    </section>
+
+    </main>
+
+    <footer>
+        <div class="quote">"החיים קצרים מדי בשביל להיות מבוגר/ת."</div>
+        <div class="meta">החופש לשחק · נטע · 2026</div>
+    </footer>
+
+    <script>
+        const CONFIG = { whatsappNumber: '972501234567', emailAddress: 'netta@example.com', courseName: 'החופש לשחק' };
+        const isPlaceholderWA = CONFIG.whatsappNumber === '972501234567';
+        const isPlaceholderE = CONFIG.emailAddress === 'netta@example.com';
+        document.getElementById('whatsapp-button').addEventListener('click', (e) => {
+            e.preventDefault();
+            if (isPlaceholderWA) { alert('המספר עדיין לא הוגדר.'); return; }
+            const msg = encodeURIComponent(`היי נטע! ראיתי את אתר הקורס "${CONFIG.courseName}".`);
+            window.open(`https://wa.me/${CONFIG.whatsappNumber}?text=${msg}`, '_blank', 'noopener');
+        });
+        document.getElementById('email-button').addEventListener('click', (e) => {
+            e.preventDefault();
+            if (isPlaceholderE) { alert('כתובת המייל עדיין לא הוגדרה.'); return; }
+            window.location.href = `mailto:${CONFIG.emailAddress}?subject=${encodeURIComponent(CONFIG.courseName)}`;
+        });
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const id = link.getAttribute('href');
+                if (id.length < 2) return;
+                const t = document.querySelector(id);
+                if (!t) return;
+                e.preventDefault();
+                t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
+</body>
+</html>
