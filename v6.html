@@ -351,6 +351,121 @@
         #cta { text-align: center; }
         #cta .lead { font-size: 1.25rem; max-width: 600px; margin: 0 auto 40px; line-height: 1.65; font-weight: 500; }
 
+        /* MEGA CTA — single prominent button */
+        .btn-mega {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            min-height: 76px;
+            padding: 22px 48px;
+            font-family: var(--sans);
+            font-size: 1.3rem;
+            font-weight: 900;
+            text-decoration: none;
+            color: var(--paper);
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            border: 3px solid var(--paper);
+            border-radius: 999px;
+            cursor: pointer;
+            box-shadow: 0 0 32px rgba(37,211,102,0.55), 0 12px 32px rgba(0,0,0,0.4);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.25);
+            animation: megaPulse 2.4s ease-in-out infinite;
+            max-width: 100%;
+        }
+        .btn-mega:hover, .btn-mega:focus-visible {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 0 50px rgba(37,211,102,0.85), 0 16px 40px rgba(0,0,0,0.4);
+        }
+        .btn-mega .wa-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px; height: 36px;
+            background: var(--paper);
+            color: #128C7E;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .btn-mega .arrow {
+            font-size: 1.6rem;
+            transition: transform 0.2s ease;
+        }
+        .btn-mega:hover .arrow { transform: translateX(-6px); }
+        @keyframes megaPulse {
+            0%, 100% { box-shadow: 0 0 32px rgba(37,211,102,0.55), 0 12px 32px rgba(0,0,0,0.4); }
+            50% { box-shadow: 0 0 48px rgba(37,211,102,0.85), 0 12px 32px rgba(0,0,0,0.4); }
+        }
+
+        .mini-alt {
+            margin-top: 22px;
+            font-size: 0.95rem;
+            color: rgba(245,245,255,0.7);
+        }
+        .mini-alt a {
+            color: var(--cyan);
+            text-decoration: none;
+            border-bottom: 1px dashed currentColor;
+        }
+        .mini-alt a:hover, .mini-alt a:focus-visible { color: var(--lime); }
+
+        /* FLOATING WHATSAPP BUTTON — always visible after scroll */
+        .float-cta {
+            position: fixed;
+            bottom: 22px;
+            inset-inline-end: 22px;
+            z-index: 998;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 22px 14px 18px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: var(--paper);
+            text-decoration: none;
+            border-radius: 999px;
+            font-family: var(--sans);
+            font-size: 0.98rem;
+            font-weight: 700;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.4), 0 0 24px rgba(37,211,102,0.4);
+            border: 2px solid rgba(255,255,255,0.25);
+            opacity: 0;
+            transform: translateY(80px);
+            transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.3s ease;
+            pointer-events: none;
+        }
+        .float-cta.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        .float-cta:hover, .float-cta:focus-visible {
+            box-shadow: 0 16px 40px rgba(0,0,0,0.5), 0 0 36px rgba(37,211,102,0.65);
+            transform: translateY(-3px);
+        }
+        .float-cta .wa-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px; height: 32px;
+            background: var(--paper);
+            color: #128C7E;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        @media (max-width: 600px) {
+            .float-cta {
+                bottom: 14px;
+                inset-inline-end: 14px;
+                inset-inline-start: 14px;
+                justify-content: center;
+                padding: 14px 22px;
+            }
+        }
+        @media print {
+            .float-cta { display: none !important; }
+        }
+
         /* FOOTER */
         footer {
             padding: 60px 24px;
@@ -506,11 +621,18 @@
         <div class="container">
             <div style="text-align:center;"><span class="section-label">[ START.EXE ]</span></div>
             <h2>★ <span class="magenta">PRESS START</span> ★</h2>
-            <p class="lead">המקומות מוגבלים. אם משהו בך אמר "כן" — שלח/י הודעה ונדבר. אני מעדיפה להכיר לפני, ולא במהלך.</p>
-            <div class="button-row">
-                <a id="whatsapp-button" href="#" class="btn btn-lime" rel="noopener">→ WHATSAPP</a>
-                <a id="email-button" href="#" class="btn btn-cyan">→ E-MAIL</a>
-            </div>
+            <p class="lead">המקומות מוגבלים. אם משהו בך אמר "כן" — לחצ/י על הכפתור ושלח/י הודעה. אני מעדיפה להכיר לפני, ולא במהלך.</p>
+
+            <a id="whatsapp-button" href="#" class="btn btn-mega" rel="noopener">
+                <span class="wa-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.4 0 1.4 1 2.7 1.2 2.9.1.2 2.1 3.2 5 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.2-.3-.3-.6-.4z"/><path d="M20.5 3.5C18.3 1.2 15.2 0 12 0 5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.7.9 3.7 1.4 5.7 1.4 6.6 0 12-5.4 12-12 0-3.2-1.2-6.2-3.4-8.3zM12 21.8c-1.8 0-3.6-.5-5.1-1.4l-.4-.2-3.7 1 1-3.6-.2-.4c-1-1.6-1.5-3.4-1.5-5.2C2.1 6.6 6.6 2.1 12 2.1c2.6 0 5.1 1 7 2.9 1.9 1.9 2.9 4.4 2.9 7 0 5.4-4.5 9.8-9.9 9.8z"/></svg>
+                </span>
+                <span>שלחי הודעה לנטע בוואטסאפ</span>
+                <span class="arrow">←</span>
+            </a>
+            <p class="mini-alt">
+                לא מתאים? <a id="email-button" href="#">או במייל →</a>
+            </p>
         </div>
     </section>
 
@@ -521,21 +643,42 @@
         <div class="meta">&gt; HACOFESH_LESACHEK.EXE_2026</div>
     </footer>
 
+    <!-- FLOATING WHATSAPP CTA -->
+    <a id="float-cta" class="float-cta" href="#" rel="noopener" aria-label="שלחי הודעה לנטע בוואטסאפ">
+        <span class="wa-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.4 0 1.4 1 2.7 1.2 2.9.1.2 2.1 3.2 5 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.2-.3-.3-.6-.4z"/><path d="M20.5 3.5C18.3 1.2 15.2 0 12 0 5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.7.9 3.7 1.4 5.7 1.4 6.6 0 12-5.4 12-12 0-3.2-1.2-6.2-3.4-8.3zM12 21.8c-1.8 0-3.6-.5-5.1-1.4l-.4-.2-3.7 1 1-3.6-.2-.4c-1-1.6-1.5-3.4-1.5-5.2C2.1 6.6 6.6 2.1 12 2.1c2.6 0 5.1 1 7 2.9 1.9 1.9 2.9 4.4 2.9 7 0 5.4-4.5 9.8-9.9 9.8z"/></svg>
+        </span>
+        <span>אני בפנים →</span>
+    </a>
+
     <script>
         const CONFIG = { whatsappNumber: '972501234567', emailAddress: 'netta@example.com', courseName: 'החופש לשחק' };
         const isPlaceholderWA = CONFIG.whatsappNumber === '972501234567';
         const isPlaceholderE = CONFIG.emailAddress === 'netta@example.com';
+
+        function openWhatsApp() {
+            if (isPlaceholderWA) { alert('המספר עדיין לא הוגדר. עדכני את CONFIG.whatsappNumber'); return; }
+            const msg = encodeURIComponent(`היי נטע! ראיתי את אתר הקורס "${CONFIG.courseName}" — אני רוצה פנימה. מתי נדבר?`);
+            window.open(`https://wa.me/${CONFIG.whatsappNumber}?text=${msg}`, '_blank', 'noopener');
+        }
+
         document.getElementById('whatsapp-button').addEventListener('click', (e) => {
             e.preventDefault();
-            if (isPlaceholderWA) { alert('המספר עדיין לא הוגדר.'); return; }
-            const msg = encodeURIComponent(`היי נטע! ראיתי את אתר הקורס "${CONFIG.courseName}".`);
-            window.open(`https://wa.me/${CONFIG.whatsappNumber}?text=${msg}`, '_blank', 'noopener');
+            openWhatsApp();
         });
+        document.getElementById('float-cta').addEventListener('click', (e) => {
+            e.preventDefault();
+            openWhatsApp();
+        });
+
         document.getElementById('email-button').addEventListener('click', (e) => {
             e.preventDefault();
             if (isPlaceholderE) { alert('כתובת המייל עדיין לא הוגדרה.'); return; }
-            window.location.href = `mailto:${CONFIG.emailAddress}?subject=${encodeURIComponent(CONFIG.courseName)}`;
+            const subject = encodeURIComponent(`רוצה פנימה — ${CONFIG.courseName}`);
+            const body = encodeURIComponent(`היי נטע,\n\nראיתי את אתר הקורס. אני רוצה לדעת עוד.\n\n`);
+            window.location.href = `mailto:${CONFIG.emailAddress}?subject=${subject}&body=${body}`;
         });
+
         document.querySelectorAll('a[href^="#"]').forEach(link => {
             link.addEventListener('click', (e) => {
                 const id = link.getAttribute('href');
@@ -546,6 +689,26 @@
                 t.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
+
+        // Show floating button after scrolling past hero
+        const floatBtn = document.getElementById('float-cta');
+        const hero = document.getElementById('hero');
+        function updateFloat() {
+            const heroBottom = hero.offsetTop + hero.offsetHeight;
+            if (window.scrollY > heroBottom - 200) {
+                floatBtn.classList.add('visible');
+            } else {
+                floatBtn.classList.remove('visible');
+            }
+        }
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(() => { updateFloat(); ticking = false; });
+                ticking = true;
+            }
+        }, { passive: true });
+        updateFloat();
     </script>
 </body>
 </html>
