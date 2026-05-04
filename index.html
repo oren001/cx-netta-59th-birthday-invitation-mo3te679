@@ -14,6 +14,27 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&family=VT323&family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <!--
+    ════════════════════════════════════════════════════════════════
+    📊 אנליטיקס — בחר אחד מהשלושה והסר את התגובה
+    ════════════════════════════════════════════════════════════════
+
+    1) Cloudflare Web Analytics  (חינם · פרטיות · ללא קוקיז)
+       https://www.cloudflare.com/web-analytics/
+       <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "YOUR_TOKEN"}'></script>
+
+    2) Plausible Analytics  ($9/חודש · פרטי · נקי)
+       https://plausible.io
+       <script defer data-domain="YOUR_DOMAIN.com" src="https://plausible.io/js/script.js"></script>
+
+    3) Google Analytics 4  (חינם · נפוץ)
+       <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXX"></script>
+       <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXX');</script>
+
+    האירועים שיירשמו אוטומטית: cta_whatsapp · float_whatsapp · form_submit · calendly_click
+    ════════════════════════════════════════════════════════════════
+    -->
     <style>
         *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
         :root {
@@ -411,6 +432,152 @@
         }
         .mini-alt a:hover, .mini-alt a:focus-visible { color: var(--lime); }
 
+        /* DIVIDER */
+        .or-divider {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            max-width: 480px;
+            margin: 56px auto 36px;
+            font-family: var(--pixel);
+            font-size: 1.2rem;
+            color: var(--cyan);
+            text-shadow: 0 0 6px var(--cyan);
+        }
+        .or-divider::before, .or-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(0,234,255,0.3);
+        }
+
+        /* INLINE FORM */
+        .form-card {
+            max-width: 540px;
+            margin: 0 auto;
+            background: rgba(0,0,0,0.4);
+            border: 2px solid var(--cyan);
+            border-radius: 20px;
+            padding: 32px 28px;
+            box-shadow: 0 0 30px rgba(0,234,255,0.2);
+            backdrop-filter: blur(8px);
+            text-align: start;
+        }
+        .form-card h3 {
+            font-family: var(--sans);
+            font-weight: 900;
+            font-size: 1.4rem;
+            margin-bottom: 6px;
+            color: var(--paper);
+            text-align: center;
+        }
+        .form-card .form-sub {
+            font-size: 0.95rem;
+            color: rgba(245,245,255,0.7);
+            text-align: center;
+            margin-bottom: 22px;
+        }
+        .form-row {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 16px;
+        }
+        .form-row label {
+            font-family: var(--pixel);
+            font-size: 1.1rem;
+            color: var(--lime);
+            text-shadow: 0 0 6px var(--lime);
+            letter-spacing: 0.04em;
+        }
+        .form-row input,
+        .form-row textarea {
+            width: 100%;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(0,234,255,0.4);
+            color: var(--paper);
+            padding: 14px 16px;
+            border-radius: 12px;
+            font-family: var(--sans);
+            font-size: 1rem;
+            line-height: 1.5;
+            transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+        }
+        .form-row input::placeholder,
+        .form-row textarea::placeholder {
+            color: rgba(245,245,255,0.4);
+        }
+        .form-row input:focus,
+        .form-row textarea:focus {
+            outline: none;
+            border-color: var(--cyan);
+            background: rgba(0,234,255,0.06);
+            box-shadow: 0 0 16px rgba(0,234,255,0.4);
+        }
+        .form-row textarea {
+            resize: vertical;
+            min-height: 90px;
+        }
+
+        .form-card .submit-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            min-height: 56px;
+            margin-top: 8px;
+            padding: 14px 24px;
+            font-family: var(--sans);
+            font-size: 1.05rem;
+            font-weight: 900;
+            color: var(--paper);
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            border: 2px solid var(--paper);
+            border-radius: 999px;
+            cursor: pointer;
+            box-shadow: 0 0 24px rgba(37,211,102,0.5);
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.25);
+        }
+        .form-card .submit-btn:hover,
+        .form-card .submit-btn:focus-visible {
+            transform: translateY(-2px);
+            box-shadow: 0 0 36px rgba(37,211,102,0.8);
+        }
+        .form-card .submit-btn .wa-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px; height: 28px;
+            background: var(--paper);
+            color: #128C7E;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* CALENDAR LINK */
+        .calendar-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 28px;
+            font-family: var(--sans);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--cyan);
+            text-decoration: none;
+            border-bottom: 1px dashed currentColor;
+            padding-bottom: 2px;
+            transition: color 0.2s;
+        }
+        .calendar-link:hover, .calendar-link:focus-visible {
+            color: var(--lime);
+        }
+        .calendar-link .ico {
+            font-size: 1.2rem;
+        }
+
         /* FLOATING WHATSAPP BUTTON — always visible after scroll */
         .float-cta {
             position: fixed;
@@ -625,6 +792,38 @@
             <p class="mini-alt">
                 ההודעה תיפתח בוואטסאפ — מוכנה. רק ללחוץ "שלח".
             </p>
+
+            <div class="or-divider" aria-hidden="true">— או —</div>
+
+            <form id="reg-form" class="form-card" novalidate>
+                <h3>חלק/י קצת יותר ←</h3>
+                <p class="form-sub">מלאי כמה שאת רוצה. הטופס יישלח אליי בוואטסאפ.</p>
+
+                <div class="form-row">
+                    <label for="f-name">השם שלך</label>
+                    <input id="f-name" name="name" type="text" autocomplete="name" placeholder="איך לקרוא לך?">
+                </div>
+                <div class="form-row">
+                    <label for="f-phone">טלפון (אופציונלי)</label>
+                    <input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="כדי שאוכל לחזור אליך">
+                </div>
+                <div class="form-row">
+                    <label for="f-msg">מה מביא/ה אותך?</label>
+                    <textarea id="f-msg" name="msg" rows="3" placeholder="משפט, תחושה, שאלה — מה שעולה."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <span class="wa-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.4 0 1.4 1 2.7 1.2 2.9.1.2 2.1 3.2 5 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.2-.3-.3-.6-.4z"/><path d="M20.5 3.5C18.3 1.2 15.2 0 12 0 5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.7.9 3.7 1.4 5.7 1.4 6.6 0 12-5.4 12-12 0-3.2-1.2-6.2-3.4-8.3zM12 21.8c-1.8 0-3.6-.5-5.1-1.4l-.4-.2-3.7 1 1-3.6-.2-.4c-1-1.6-1.5-3.4-1.5-5.2C2.1 6.6 6.6 2.1 12 2.1c2.6 0 5.1 1 7 2.9 1.9 1.9 2.9 4.4 2.9 7 0 5.4-4.5 9.8-9.9 9.8z"/></svg>
+                    </span>
+                    שלחי טופס בוואטסאפ
+                </button>
+            </form>
+
+            <a id="calendar-link" class="calendar-link" href="#" rel="noopener" hidden>
+                <span class="ico" aria-hidden="true">📅</span>
+                <span>או תיאום שיחת היכרות ישירה</span>
+            </a>
         </div>
     </section>
 
@@ -644,24 +843,71 @@
     </a>
 
     <script>
-        const CONFIG = { whatsappNumber: '61415456750', emailAddress: 'netta@example.com', courseName: 'החופש לשחק' };
-        const isPlaceholderWA = false;
-        const isPlaceholderE = CONFIG.emailAddress === 'netta@example.com';
+        const CONFIG = {
+            whatsappNumber: '61415456750',           // ללא + או רווחים
+            courseName: 'החופש לשחק',
+            calendlyUrl: ''                          // ⬅️ מלאי כתובת Calendly/TidyCal כדי להציג כפתור תיאום שיחה
+        };
 
-        function openWhatsApp() {
-            if (isPlaceholderWA) { alert('המספר עדיין לא הוגדר. עדכני את CONFIG.whatsappNumber'); return; }
-            const msg = encodeURIComponent(`היי נטע! ראיתי את אתר הקורס "${CONFIG.courseName}" — אני רוצה פנימה. מתי נדבר?`);
+        // Vendor-agnostic event tracking — works with Plausible, GA4, or none (logs only)
+        function track(event, props = {}) {
+            try {
+                if (typeof plausible === 'function') plausible(event, { props });
+                if (typeof gtag === 'function') gtag('event', event, props);
+            } catch (e) { /* never break UX for analytics */ }
+            console.log('[track]', event, props);
+        }
+
+        function openWhatsApp(text, source) {
+            const msg = encodeURIComponent(text || `היי נטע! ראיתי את אתר הקורס "${CONFIG.courseName}" — אני רוצה פנימה. מתי נדבר?`);
+            track(source || 'whatsapp_open');
             window.open(`https://wa.me/${CONFIG.whatsappNumber}?text=${msg}`, '_blank', 'noopener');
         }
 
         document.getElementById('whatsapp-button').addEventListener('click', (e) => {
             e.preventDefault();
-            openWhatsApp();
+            openWhatsApp(null, 'cta_whatsapp');
         });
         document.getElementById('float-cta').addEventListener('click', (e) => {
             e.preventDefault();
-            openWhatsApp();
+            openWhatsApp(null, 'float_whatsapp');
         });
+
+        // Form: build a structured WhatsApp message from the inputs
+        document.getElementById('reg-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const f = e.target;
+            const name = f.name.value.trim();
+            const phone = f.phone.value.trim();
+            const msg = f.msg.value.trim();
+
+            const lines = [`היי נטע! ראיתי את אתר הקורס "${CONFIG.courseName}" 🌟`, ''];
+            if (name) lines.push(`*שם:* ${name}`);
+            if (phone) lines.push(`*טלפון:* ${phone}`);
+            if (msg) {
+                lines.push('');
+                lines.push(msg);
+            }
+            if (!name && !phone && !msg) {
+                lines.length = 0;
+                lines.push(`היי נטע! ראיתי את אתר הקורס "${CONFIG.courseName}" — אני רוצה פנימה.`);
+            }
+
+            track('form_submit', { has_name: !!name, has_phone: !!phone, has_msg: !!msg });
+            openWhatsApp(lines.join('\n'), 'form_whatsapp');
+        });
+
+        // Calendly / TidyCal link — show only if configured
+        const calendarLink = document.getElementById('calendar-link');
+        if (CONFIG.calendlyUrl) {
+            calendarLink.href = CONFIG.calendlyUrl;
+            calendarLink.hidden = false;
+            calendarLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                track('calendly_click');
+                window.open(CONFIG.calendlyUrl, '_blank', 'noopener');
+            });
+        }
 
         document.querySelectorAll('a[href^="#"]').forEach(link => {
             link.addEventListener('click', (e) => {
