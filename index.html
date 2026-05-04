@@ -3,89 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>הקורס של נטע — נוכחות, גוף ותנועה</title>
-    <meta name="description" content="קורס סדנאי בהנחיית נטע — מסע של נוכחות, גוף ותנועה. הרשמה פתוחה.">
+    <meta name="theme-color" content="#fff7ed">
+    <meta name="color-scheme" content="light">
+
+    <title>החופש לשחק — קורס בהנחיית נטע</title>
+    <meta name="description" content="קורס סדנאי בהנחיית נטע — מסע משחקי של חופש, יצירה ונוכחות. מרחב חם, נשי ומזמין לבוא ולשחק. הרשמה פתוחה.">
+
+    <!-- Social sharing (WhatsApp, Facebook, etc.) -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="he_IL">
+    <meta property="og:title" content="החופש לשחק — קורס בהנחיית נטע">
+    <meta property="og:description" content="מסע סדנאי משחקי. מרחב חם ומזמין לחזור אל הספונטניות, אל היצירה ואל השמחה.">
+    <meta property="og:image" content="assets/netta.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="החופש לשחק — קורס בהנחיית נטע">
+    <meta name="twitter:description" content="מסע סדנאי משחקי. מרחב חם ומזמין.">
+
+    <!-- Inline SVG favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23fbbf6b'/%3E%3Ccircle cx='24' cy='28' r='4' fill='%23fff7ed'/%3E%3Ccircle cx='40' cy='28' r='4' fill='%23fff7ed'/%3E%3Cpath d='M22 40 Q32 48 42 40' stroke='%23fff7ed' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Heebo:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- Course structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "החופש לשחק",
+      "description": "קורס סדנאי בהנחיית נטע — מסע משחקי של חופש, יצירה ונוכחות.",
+      "inLanguage": "he",
+      "provider": {
+        "@type": "Person",
+        "name": "נטע"
+      }
+    }
+    </script>
+
     <style>
-        * {
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
         :root {
-            --bg-deep: #0a0a0a;
-            --bg-soft: #141414;
-            --bg-card: #1c1c1c;
-            --line: #2a2a2a;
-            --text: #ece7df;
-            --text-muted: #9c958a;
-            --accent: #c9a96e;
-            --accent-warm: #e0bd7d;
-            --accent-glow: rgba(201, 169, 110, 0.18);
-            --shadow-soft: 0 20px 60px rgba(0, 0, 0, 0.5);
+            /* Warm pastel palette */
+            --cream: #fff7ed;
+            --cream-deep: #fdecd3;
+            --peach: #ffd9b3;
+            --peach-deep: #ffb87a;
+            --rose: #f8b6c3;
+            --rose-deep: #ec85a0;
+            --terracotta: #d96f4a;
+            --mustard: #f4b740;
+            --mustard-deep: #e09418;
+            --sage: #b8c9a3;
+            --plum: #6b3a4f;
+            --ink: #3a2a2e;
+            --ink-soft: #6b5a5e;
+            --line: rgba(107, 58, 79, 0.12);
+
+            --serif: 'Caveat', 'Brush Script MT', cursive;
+            --sans: 'Heebo', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+
+            --shadow-soft: 0 12px 36px rgba(217, 111, 74, 0.15);
+            --shadow-warm: 0 20px 50px rgba(236, 133, 160, 0.25);
         }
 
-        html, body {
-            background: var(--bg-deep);
-            color: var(--text);
-            font-family: 'Heebo', sans-serif;
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+        }
+
+        body {
+            font-family: var(--sans);
             font-weight: 300;
-            line-height: 1.7;
+            line-height: 1.75;
+            color: var(--ink);
+            background: var(--cream);
             min-height: 100vh;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         ::selection {
-            background: var(--accent);
-            color: var(--bg-deep);
+            background: var(--mustard);
+            color: var(--ink);
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--terracotta);
+            outline-offset: 4px;
+            border-radius: 4px;
+        }
+
+        :focus:not(:focus-visible) { outline: none; }
+
+        /* Skip link */
+        .skip-link {
+            position: absolute;
+            inset-inline-start: -9999px;
+            top: 16px;
+            background: var(--terracotta);
+            color: var(--cream);
+            padding: 12px 20px;
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 999px;
+            z-index: 1000;
+        }
+        .skip-link:focus { inset-inline-start: 16px; }
+
+        /* Scroll progress */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            inset-inline-start: 0;
+            height: 3px;
+            width: var(--progress, 0%);
+            background: linear-gradient(90deg, var(--rose-deep), var(--mustard), var(--peach-deep));
+            z-index: 999;
+            transition: width 80ms linear;
         }
 
         .container {
-            max-width: 920px;
+            max-width: 980px;
             margin: 0 auto;
             padding: 0 24px;
+        }
+
+        /* Floating shapes for whimsy */
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.5;
+            pointer-events: none;
+            filter: blur(40px);
+            z-index: 0;
         }
 
         /* HERO */
         #hero {
             position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
+            padding: 60px 24px 80px;
             overflow: hidden;
-            padding: 80px 24px;
+            background:
+                radial-gradient(ellipse at top right, var(--peach) 0%, transparent 50%),
+                radial-gradient(ellipse at bottom left, var(--rose) 0%, transparent 50%),
+                var(--cream);
         }
 
-        #hero::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 120vmin;
-            height: 120vmin;
-            transform: translate(-50%, -50%);
-            background: radial-gradient(circle at center, var(--accent-glow) 0%, transparent 60%);
-            pointer-events: none;
-            animation: spotlightBreath 6s ease-in-out infinite;
-        }
-
-        @keyframes spotlightBreath {
-            0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
-            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
-        }
-
-        .hero-inner {
+        .hero-grid {
             position: relative;
             z-index: 2;
-            max-width: 720px;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            padding: 40px 0;
+        }
+
+        .hero-text {
             opacity: 0;
             transform: translateY(20px);
-            animation: fadeUp 1.4s ease-out 0.2s forwards;
+            animation: fadeUp 1s ease-out 0.2s forwards;
         }
 
         @keyframes fadeUp {
@@ -93,186 +184,357 @@
         }
 
         .eyebrow {
-            font-family: 'Cormorant Garamond', serif;
-            font-style: italic;
-            font-size: 1.15rem;
-            color: var(--accent-warm);
-            letter-spacing: 0.12em;
-            margin-bottom: 24px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--cream-deep);
+            color: var(--terracotta);
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 10px 22px;
+            border-radius: 999px;
+            margin-bottom: 28px;
+            letter-spacing: 0.02em;
+        }
+
+        .eyebrow .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--terracotta);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.4); opacity: 0.6; }
         }
 
         h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 400;
-            font-size: clamp(2.4rem, 6vw, 4.4rem);
-            line-height: 1.1;
-            margin-bottom: 28px;
-            letter-spacing: -0.01em;
+            font-family: var(--sans);
+            font-weight: 900;
+            font-size: clamp(2.6rem, 6vw, 4.8rem);
+            line-height: 1.05;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+            color: var(--ink);
         }
 
         h1 .accent {
-            color: var(--accent);
-            font-style: italic;
-            font-weight: 500;
+            font-family: var(--serif);
+            font-weight: 700;
+            font-style: normal;
+            color: var(--terracotta);
+            font-size: 1.2em;
+            display: inline-block;
+            transform: rotate(-3deg);
+            margin-inline-start: 8px;
+        }
+
+        .hero-tagline {
+            font-family: var(--serif);
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            color: var(--rose-deep);
+            margin-bottom: 24px;
+            font-weight: 600;
+            transform: rotate(-1deg);
+            display: inline-block;
         }
 
         .hero-sub {
             font-size: 1.15rem;
-            color: var(--text-muted);
-            max-width: 540px;
-            margin: 0 auto 40px;
-            line-height: 1.8;
+            color: var(--ink-soft);
+            max-width: 480px;
+            margin-bottom: 32px;
+            line-height: 1.7;
         }
 
         .hero-meta {
-            display: inline-flex;
-            gap: 32px;
+            display: flex;
+            gap: 24px;
             flex-wrap: wrap;
-            justify-content: center;
-            padding: 18px 32px;
-            border-top: 1px solid var(--line);
-            border-bottom: 1px solid var(--line);
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            margin-bottom: 40px;
+            margin-bottom: 36px;
         }
 
-        .hero-meta span strong {
-            color: var(--text);
-            font-weight: 500;
+        .hero-meta .pill {
+            background: white;
+            border: 2px solid var(--cream-deep);
+            padding: 10px 18px;
+            border-radius: 999px;
+            font-size: 0.9rem;
+            color: var(--ink);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
         }
 
-        .scroll-hint {
+        .hero-meta .pill strong {
+            color: var(--terracotta);
+            font-weight: 700;
+            margin-inline-end: 4px;
+        }
+
+        .hero-image-wrap {
+            position: relative;
+        }
+
+        .hero-image {
+            position: relative;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            overflow: hidden;
+            aspect-ratio: 4 / 5;
+            background: var(--peach);
+            box-shadow: var(--shadow-warm);
+            transform: rotate(2deg);
+            opacity: 0;
+            animation: floatIn 1.2s ease-out 0.5s forwards;
+        }
+
+        @keyframes floatIn {
+            from { opacity: 0; transform: rotate(2deg) translateY(40px) scale(0.96); }
+            to   { opacity: 1; transform: rotate(2deg) translateY(0) scale(1); }
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .badge {
             position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            letter-spacing: 0.2em;
-            opacity: 0.7;
-            animation: scrollBob 2.4s ease-in-out infinite;
+            background: var(--mustard);
+            color: var(--ink);
+            font-family: var(--serif);
+            font-size: 1.5rem;
+            font-weight: 700;
+            padding: 18px 22px;
+            border-radius: 50%;
+            width: 110px;
+            height: 110px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            line-height: 1.1;
+            top: 20px;
+            inset-inline-start: -20px;
+            transform: rotate(-12deg);
+            box-shadow: var(--shadow-soft);
+            animation: badgeBob 3s ease-in-out infinite;
+            z-index: 3;
         }
 
-        @keyframes scrollBob {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(8px); }
+        @keyframes badgeBob {
+            0%, 100% { transform: rotate(-12deg) translateY(0); }
+            50% { transform: rotate(-8deg) translateY(-6px); }
+        }
+
+        .button-row {
+            display: inline-flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 52px;
+            padding: 14px 36px;
+            font-family: var(--sans);
+            font-size: 1.05rem;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            border-radius: 999px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--terracotta);
+            color: var(--cream);
+            box-shadow: 0 8px 24px rgba(217, 111, 74, 0.35);
+        }
+
+        .btn-primary:hover,
+        .btn-primary:focus-visible {
+            background: var(--rose-deep);
+            transform: translateY(-3px);
+            box-shadow: 0 14px 32px rgba(236, 133, 160, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--ink);
+            border: 2px solid var(--ink);
+        }
+
+        .btn-secondary:hover,
+        .btn-secondary:focus-visible {
+            background: var(--ink);
+            color: var(--cream);
+            transform: translateY(-3px);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--ink-soft);
+            border: 2px solid var(--line);
+            font-weight: 500;
+            font-size: 0.95rem;
+            min-height: 44px;
+            padding: 10px 24px;
+        }
+
+        .btn-ghost:hover,
+        .btn-ghost:focus-visible {
+            border-color: var(--terracotta);
+            color: var(--terracotta);
         }
 
         /* SECTIONS */
         section.block {
-            padding: 100px 0;
-            border-top: 1px solid var(--line);
+            padding: 90px 0;
+            position: relative;
         }
 
         .section-eyebrow {
-            font-family: 'Cormorant Garamond', serif;
-            font-style: italic;
-            color: var(--accent-warm);
-            font-size: 1rem;
-            letter-spacing: 0.18em;
-            margin-bottom: 16px;
+            font-family: var(--serif);
+            color: var(--rose-deep);
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 12px;
             text-align: center;
+            transform: rotate(-1deg);
         }
 
         h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 400;
+            font-family: var(--sans);
+            font-weight: 900;
             font-size: clamp(2rem, 4.5vw, 3rem);
             text-align: center;
             margin-bottom: 56px;
             line-height: 1.2;
+            color: var(--ink);
+            letter-spacing: -0.01em;
         }
 
         h2 .accent {
-            color: var(--accent);
-            font-style: italic;
+            font-family: var(--serif);
+            font-weight: 700;
+            color: var(--terracotta);
+            font-size: 1.3em;
+            display: inline-block;
+            transform: rotate(-2deg);
         }
 
-        /* PORTRAIT */
-        .portrait-band {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 56px;
-            align-items: center;
+        /* ABOUT */
+        #about {
+            background: var(--cream-deep);
         }
 
-        .portrait-frame {
-            position: relative;
-            aspect-ratio: 4 / 3;
-            background: var(--bg-soft);
-            overflow: hidden;
-            border: 1px solid var(--line);
+        .about-text {
+            max-width: 680px;
+            margin: 0 auto;
+            text-align: center;
         }
 
-        .portrait-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(20%) contrast(1.05);
-            transition: filter 0.6s ease;
+        .about-text p {
+            font-size: 1.15rem;
+            color: var(--ink);
+            margin-bottom: 22px;
+            line-height: 1.85;
         }
 
-        .portrait-frame:hover img {
-            filter: grayscale(0%) contrast(1.1);
+        .about-text p:last-child {
+            color: var(--ink-soft);
+            margin-bottom: 0;
         }
 
-        .portrait-text p {
-            font-size: 1.05rem;
-            color: var(--text);
-            margin-bottom: 18px;
-        }
-
-        .portrait-text p:last-child {
-            color: var(--text-muted);
+        .about-text .highlight {
+            background: linear-gradient(180deg, transparent 60%, var(--mustard) 60%);
+            padding: 0 4px;
+            font-weight: 500;
         }
 
         /* CURRICULUM */
         .modules {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 22px;
         }
 
         .module {
-            background: var(--bg-card);
-            border: 1px solid var(--line);
-            padding: 36px 28px;
-            transition: border-color 0.4s ease, transform 0.4s ease;
+            background: white;
+            border-radius: 24px;
+            padding: 32px 26px;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
             position: relative;
+            box-shadow: 0 6px 20px rgba(107, 58, 79, 0.06);
         }
 
-        .module:hover {
-            border-color: var(--accent);
-            transform: translateY(-4px);
+        .module:nth-child(odd) { transform: rotate(-0.5deg); }
+        .module:nth-child(even) { transform: rotate(0.5deg); }
+
+        .module:hover,
+        .module:focus-within {
+            transform: translateY(-6px) rotate(0deg);
+            box-shadow: var(--shadow-warm);
         }
 
         .module-num {
-            font-family: 'Cormorant Garamond', serif;
-            font-style: italic;
-            color: var(--accent);
-            font-size: 1.2rem;
-            margin-bottom: 12px;
-            letter-spacing: 0.1em;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: var(--peach);
+            color: var(--terracotta);
+            font-family: var(--serif);
+            font-size: 1.6rem;
+            font-weight: 700;
+            border-radius: 50%;
+            margin-bottom: 16px;
         }
 
+        .module:nth-child(2) .module-num { background: var(--rose); color: white; }
+        .module:nth-child(3) .module-num { background: var(--mustard); color: var(--ink); }
+        .module:nth-child(4) .module-num { background: var(--sage); color: var(--ink); }
+        .module:nth-child(5) .module-num { background: var(--peach-deep); color: white; }
+        .module:nth-child(6) .module-num { background: var(--rose-deep); color: white; }
+        .module:nth-child(7) .module-num { background: var(--mustard-deep); color: white; }
+        .module:nth-child(8) .module-num { background: var(--terracotta); color: white; }
+
         .module h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 500;
-            font-size: 1.5rem;
-            margin-bottom: 14px;
-            color: var(--text);
+            font-family: var(--sans);
+            font-weight: 700;
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            color: var(--ink);
         }
 
         .module p {
-            color: var(--text-muted);
+            color: var(--ink-soft);
             font-size: 0.98rem;
+            line-height: 1.65;
         }
 
-        /* DETAILS LIST */
-        .details-list {
-            max-width: 620px;
+        /* DETAILS */
+        #details {
+            background: linear-gradient(180deg, var(--cream) 0%, var(--peach) 100%);
+        }
+
+        .details-card {
+            max-width: 680px;
             margin: 0 auto;
+            background: white;
+            border-radius: 32px;
+            padding: 48px 40px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .details-list {
             list-style: none;
         }
 
@@ -280,337 +542,403 @@
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            padding: 22px 0;
-            border-bottom: 1px solid var(--line);
+            padding: 20px 0;
+            border-bottom: 1px dashed var(--line);
             gap: 24px;
         }
 
-        .details-list li:last-child {
-            border-bottom: none;
-        }
+        .details-list li:last-child { border-bottom: none; }
 
         .details-list .label {
-            font-family: 'Cormorant Garamond', serif;
-            font-style: italic;
-            color: var(--accent-warm);
-            font-size: 1.1rem;
-            letter-spacing: 0.05em;
+            font-family: var(--serif);
+            color: var(--rose-deep);
+            font-size: 1.4rem;
+            font-weight: 600;
             white-space: nowrap;
         }
 
         .details-list .value {
-            color: var(--text);
-            text-align: left;
-            direction: rtl;
+            color: var(--ink);
+            text-align: end;
+            font-size: 1.02rem;
         }
 
         .details-list .value strong {
-            font-weight: 500;
-            color: var(--text);
+            font-weight: 700;
+            color: var(--terracotta);
         }
 
         /* CTA */
         #cta {
             text-align: center;
-            background: linear-gradient(180deg, transparent 0%, rgba(201, 169, 110, 0.04) 100%);
+            background: linear-gradient(135deg, var(--rose) 0%, var(--peach) 100%);
+            position: relative;
         }
 
-        #cta h2 {
-            margin-bottom: 24px;
-        }
+        #cta h2 { margin-bottom: 20px; }
 
         #cta p {
-            color: var(--text-muted);
-            max-width: 520px;
-            margin: 0 auto 40px;
-            font-size: 1.05rem;
+            color: var(--ink);
+            max-width: 540px;
+            margin: 0 auto 36px;
+            font-size: 1.1rem;
         }
 
-        .button-row {
-            display: inline-flex;
-            gap: 16px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 18px 42px;
-            font-family: 'Heebo', sans-serif;
-            font-size: 1rem;
-            font-weight: 400;
-            letter-spacing: 0.08em;
-            text-decoration: none;
-            cursor: pointer;
-            border: 1px solid var(--accent);
-            background: transparent;
-            color: var(--accent);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-primary {
-            background: var(--accent);
-            color: var(--bg-deep);
-        }
-
-        .btn-primary:hover {
-            background: var(--accent-warm);
-            border-color: var(--accent-warm);
-            transform: translateY(-2px);
-            box-shadow: 0 12px 32px rgba(201, 169, 110, 0.25);
-        }
-
-        .btn-secondary:hover {
-            background: var(--accent);
-            color: var(--bg-deep);
-            transform: translateY(-2px);
+        .share-row {
+            margin-top: 28px;
         }
 
         /* FOOTER */
         footer {
             padding: 50px 24px;
             text-align: center;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            border-top: 1px solid var(--line);
-            letter-spacing: 0.05em;
+            color: var(--ink-soft);
+            font-size: 0.9rem;
+            background: var(--cream-deep);
         }
 
         footer .quote {
-            font-family: 'Cormorant Garamond', serif;
-            font-style: italic;
-            font-size: 1.1rem;
-            color: var(--accent-warm);
-            margin-bottom: 16px;
+            font-family: var(--serif);
+            font-size: 1.6rem;
+            color: var(--terracotta);
+            margin-bottom: 14px;
+            font-weight: 600;
+            transform: rotate(-1deg);
+            display: inline-block;
         }
 
         /* RESPONSIVE */
-        @media (max-width: 720px) {
-            .portrait-band {
+        @media (max-width: 820px) {
+            .hero-grid {
                 grid-template-columns: 1fr;
-                gap: 36px;
+                gap: 40px;
+                text-align: center;
             }
 
-            section.block {
-                padding: 70px 0;
+            .hero-text {
+                order: 2;
+            }
+
+            .hero-image-wrap {
+                order: 1;
+                max-width: 320px;
+                margin: 0 auto;
+            }
+
+            .badge {
+                width: 88px;
+                height: 88px;
+                font-size: 1.2rem;
+                inset-inline-start: -10px;
             }
 
             .hero-meta {
-                gap: 18px;
-                padding: 14px 20px;
-                font-size: 0.88rem;
+                justify-content: center;
             }
+
+            .button-row {
+                width: 100%;
+                justify-content: center;
+            }
+
+            section.block { padding: 70px 0; }
+
+            .details-card { padding: 32px 24px; }
 
             .details-list li {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 6px;
+                gap: 4px;
             }
 
-            .details-list .value {
-                text-align: right;
-            }
+            .details-list .value { text-align: start; }
 
-            .btn {
-                padding: 16px 32px;
-                font-size: 0.95rem;
-            }
+            .btn { width: 100%; max-width: 320px; padding: 14px 24px; }
+
+            .button-row { flex-direction: column; align-items: center; }
         }
 
-        /* REVEAL ON SCROLL */
+        /* REVEAL */
         .reveal {
             opacity: 0;
             transform: translateY(24px);
-            transition: opacity 1s ease, transform 1s ease;
+            transition: opacity 0.9s ease, transform 0.9s ease;
+            will-change: opacity, transform;
         }
 
         .reveal.visible {
             opacity: 1;
             transform: translateY(0);
         }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.001s !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.001s !important;
+            }
+            .reveal, .hero-text, .hero-image { opacity: 1; transform: none; }
+            .module:nth-child(odd), .module:nth-child(even) { transform: none; }
+        }
+
+        @media print {
+            body { background: white; }
+            #scroll-progress, .button-row, .share-row, .badge { display: none !important; }
+            section.block { page-break-inside: avoid; padding: 30px 0; }
+            #hero, #about, #details, #cta { background: white !important; }
+            .module { box-shadow: none; border: 1px solid #ccc; }
+        }
     </style>
 </head>
 <body>
 
-    <!-- HERO -->
-    <section id="hero">
-        <div class="hero-inner">
-            <div class="eyebrow">— קורס חדש בהנחיית נטע —</div>
-            <h1>נוכחות, גוף<br><span class="accent">ותנועה</span></h1>
-            <p class="hero-sub">
-                מסע סדנאי בן שמונה מפגשים — חקירה של נוכחות, הקשבה לגוף, ושפת התנועה האישית.
-                מרחב אינטימי לכל מי שמבקשת לחזור הביתה אל עצמה.
-            </p>
-            <div class="hero-meta">
-                <span><strong>פתיחה</strong> ספטמבר 2026</span>
-                <span><strong>8 מפגשים</strong> שבועיים</span>
-                <span><strong>קבוצה קטנה</strong> עד 12 משתתפות</span>
-            </div>
-            <div class="button-row">
-                <a href="#cta" class="btn btn-primary">להרשמה</a>
-                <a href="#about" class="btn btn-secondary">קראו עוד</a>
-            </div>
-        </div>
-        <div class="scroll-hint">↓ גלילה</div>
-    </section>
+    <a href="#main" class="skip-link">דלג לתוכן</a>
+    <div id="scroll-progress" aria-hidden="true"></div>
 
-    <!-- ABOUT / PORTRAIT -->
-    <section id="about" class="block">
-        <div class="container">
-            <div class="section-eyebrow">— על הקורס —</div>
-            <h2>מרחב לחזור<br><span class="accent">אל הגוף</span></h2>
+    <main id="main">
 
-            <div class="portrait-band reveal">
-                <div class="portrait-frame">
-                    <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=900&q=80"
-                         alt="דימוי אווירה — דמות באור זרקור"
-                         loading="lazy">
+        <!-- HERO -->
+        <section id="hero" aria-labelledby="hero-title">
+            <div class="hero-grid">
+                <div class="hero-text">
+                    <div class="eyebrow">
+                        <span class="dot" aria-hidden="true"></span>
+                        קורס חדש בהנחיית נטע
+                    </div>
+                    <h1 id="hero-title">
+                        החופש <span class="accent">לשחק</span>
+                    </h1>
+                    <div class="hero-tagline">בואי לפגוש את הילדה שבך</div>
+                    <p class="hero-sub">
+                        מסע סדנאי משחקי, חם ונשי. מרחב לחזור אל הספונטניות, אל היצירה, ואל השמחה הפשוטה של פשוט להיות.
+                    </p>
+                    <div class="hero-meta">
+                        <span class="pill"><strong>פתיחה</strong>ספטמבר 2026</span>
+                        <span class="pill"><strong>8 מפגשים</strong>שבועיים</span>
+                        <span class="pill"><strong>קבוצה קטנה</strong>עד 12 נשים</span>
+                    </div>
+                    <div class="button-row">
+                        <a href="#cta" class="btn btn-primary">הרשמה לקורס</a>
+                        <a href="#about" class="btn btn-secondary">קצת יותר</a>
+                    </div>
                 </div>
-                <div class="portrait-text">
-                    <p>הקורס נולד מתוך שנים של עבודה עם הגוף, התנועה והנוכחות — ומתוך אמונה שלכל אחת יש שפה פנימית שמבקשת לדבר.</p>
-                    <p>במהלך שמונה מפגשים נחקור יחד מצבי הקשבה, מגע עדין עם הקרקע, איכויות נשימה, ומרחבי דממה. אין צורך בניסיון קודם — רק בנכונות להיות נוכחת.</p>
-                    <p>זהו מרחב נשי, מוגן וחומל, לכל מי שמבקשת להאט, להתבונן, ולהיפגש מחדש עם עצמה.</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- CURRICULUM -->
-    <section id="curriculum" class="block">
-        <div class="container">
-            <div class="section-eyebrow">— מבנה הקורס —</div>
-            <h2>שמונה <span class="accent">תחנות</span> במסע</h2>
-
-            <div class="modules">
-                <div class="module reveal">
-                    <div class="module-num">I.</div>
-                    <h3>הגעה</h3>
-                    <p>הקרקע, הנשימה, והכניסה אל המרחב הפנימי.</p>
-                </div>
-                <div class="module reveal">
-                    <div class="module-num">II.</div>
-                    <h3>הקשבה</h3>
-                    <p>איכויות של דממה, שמיעה פנימית והתבוננות.</p>
-                </div>
-                <div class="module reveal">
-                    <div class="module-num">III.</div>
-                    <h3>גבולות</h3>
-                    <p>חקירה של "כן" ו"לא" דרך הגוף והתנועה.</p>
-                </div>
-                <div class="module reveal">
-                    <div class="module-num">IV.</div>
-                    <h3>מרחב</h3>
-                    <p>מערכות יחסים — בין הגוף לחלל ובין משתתפות.</p>
-                </div>
-                <div class="module reveal">
-                    <div class="module-num">V.</div>
-                    <h3>מגע</h3>
-                    <p>תקשורת לא־מילולית, מגע מודע, אמון.</p>
-                </div>
-                <div class="module reveal">
-                    <div class="module-num">VI.</div>
-                    <h3>קול</h3>
-                    <p>הוצאת הקול הפנימי — נשימה, צליל, ביטוי.</p>
-                </div>
-                <div class="module reveal">
-                    <div class="module-num">VII.</div>
-                    <h3>שחרור</h3>
-                    <p>תנועה אותנטית, רגש, וזרימה חופשית.</p>
-                </div>
-                <div class="module reveal">
-                    <div class="module-num">VIII.</div>
-                    <h3>חזרה</h3>
-                    <p>סגירת מעגל — מה לוקחות איתנו הלאה.</p>
+                <div class="hero-image-wrap">
+                    <div class="badge" aria-hidden="true">חדש!<br>2026</div>
+                    <div class="hero-image">
+                        <img src="assets/netta.jpg"
+                             alt="נטע — מנחת הקורס"
+                             loading="eager"
+                             width="800"
+                             height="1000">
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- DETAILS -->
-    <section id="details" class="block">
-        <div class="container">
-            <div class="section-eyebrow">— פרטים מעשיים —</div>
-            <h2>המסגרת <span class="accent">בקצרה</span></h2>
+        <!-- ABOUT -->
+        <section id="about" class="block" aria-labelledby="about-title">
+            <div class="container">
+                <div class="section-eyebrow">— על הקורס —</div>
+                <h2 id="about-title">לזכור איך <span class="accent">משחקים</span></h2>
 
-            <ul class="details-list reveal">
-                <li>
-                    <span class="label">מתי</span>
-                    <span class="value"><strong>ימי שלישי</strong>, 19:00–21:30 · החל מ־1 בספטמבר 2026</span>
-                </li>
-                <li>
-                    <span class="label">היכן</span>
-                    <span class="value">סטודיו "המרחב" · רחוב הרצל 12, תל אביב</span>
-                </li>
-                <li>
-                    <span class="label">משך</span>
-                    <span class="value">8 מפגשים שבועיים · סך הכול כ־20 שעות עבודה</span>
-                </li>
-                <li>
-                    <span class="label">קבוצה</span>
-                    <span class="value">קבוצה אינטימית · עד 12 משתתפות</span>
-                </li>
-                <li>
-                    <span class="label">השקעה</span>
-                    <span class="value"><strong>1,800 ₪</strong> · אפשרות לתשלומים</span>
-                </li>
-                <li>
-                    <span class="label">לחזור עם</span>
-                    <span class="value">בגדים נוחים · בקבוק מים · יומן אישי (אופציונלי)</span>
-                </li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- CTA -->
-    <section id="cta" class="block">
-        <div class="container">
-            <div class="section-eyebrow">— הרשמה —</div>
-            <h2>מקום אחד <span class="accent">מחכה לך</span></h2>
-            <p>
-                המקומות מוגבלים. אם הקורס מהדהד בך — שלחי הודעה ונתאם שיחת היכרות קצרה לפני ההרשמה.
-            </p>
-            <div class="button-row">
-                <a id="whatsapp-button" class="btn btn-primary" href="#">
-                    שליחת הודעה בוואטסאפ
-                </a>
-                <a id="email-button" class="btn btn-secondary" href="#">
-                    שליחת מייל
-                </a>
+                <div class="about-text reveal">
+                    <p>
+                        אי שם בדרך, רובנו שכחנו לשחק. הקורס הזה הוא הזמנה לחזור אל זה — בלי שיפוט, בלי "צריך", בלי לעשות "נכון". <span class="highlight">פשוט להיות, פשוט לזרום, פשוט לשחק.</span>
+                    </p>
+                    <p>
+                        במהלך שמונה מפגשים נחקור יחד תנועה ספונטנית, קול, יצירה, מגע מודע, צחוק, ומרחבי דממה. כל מפגש הוא הזמנה אחרת — לא חייבים להגיע מוכנות, לא חייבים לדעת. רק להגיע.
+                    </p>
+                    <p>
+                        זהו מרחב נשי, חם, מקבל ומשחקי, לכל מי שמרגישה שמשהו בה מבקש להישחרר.
+                    </p>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- FOOTER -->
+        <!-- CURRICULUM -->
+        <section id="curriculum" class="block" aria-labelledby="curriculum-title">
+            <div class="container">
+                <div class="section-eyebrow">— מבנה הקורס —</div>
+                <h2 id="curriculum-title">שמונה <span class="accent">משחקים</span> לפגוש את עצמך</h2>
+
+                <div class="modules">
+                    <article class="module reveal">
+                        <div class="module-num">1</div>
+                        <h3>הגעה</h3>
+                        <p>נפילה רכה אל המרחב. נשימה, נוכחות, הכרות עם הקבוצה.</p>
+                    </article>
+                    <article class="module reveal">
+                        <div class="module-num">2</div>
+                        <h3>תנועה ספונטנית</h3>
+                        <p>הגוף יודע. נלמד פשוט להקשיב לו ולתת לו לרקוד.</p>
+                    </article>
+                    <article class="module reveal">
+                        <div class="module-num">3</div>
+                        <h3>הקול שבפנים</h3>
+                        <p>צליל, נשימה, צחוק — הוצאת הקול בלי בושה.</p>
+                    </article>
+                    <article class="module reveal">
+                        <div class="module-num">4</div>
+                        <h3>יצירה במרחב</h3>
+                        <p>חומרים, צבעים, וכל מה שיוצא — בלי מטרה.</p>
+                    </article>
+                    <article class="module reveal">
+                        <div class="module-num">5</div>
+                        <h3>מגע מודע</h3>
+                        <p>תקשורת לא־מילולית, אמון, וקבלת מגע.</p>
+                    </article>
+                    <article class="module reveal">
+                        <div class="module-num">6</div>
+                        <h3>הילדה שבי</h3>
+                        <p>פגישה רכה עם החלק הקטן, הסקרן והמשחקי.</p>
+                    </article>
+                    <article class="module reveal">
+                        <div class="module-num">7</div>
+                        <h3>פראיות וצחוק</h3>
+                        <p>שחרור, רעש, התפרצות, שמחה — כל מה שאסור בדרך כלל.</p>
+                    </article>
+                    <article class="module reveal">
+                        <div class="module-num">8</div>
+                        <h3>חזרה הביתה</h3>
+                        <p>סגירת מעגל. מה לוקחות איתנו אל החיים?</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- DETAILS -->
+        <section id="details" class="block" aria-labelledby="details-title">
+            <div class="container">
+                <div class="section-eyebrow">— פרטים מעשיים —</div>
+                <h2 id="details-title">המסגרת <span class="accent">בקצרה</span></h2>
+
+                <div class="details-card reveal">
+                    <ul class="details-list">
+                        <li>
+                            <span class="label">מתי</span>
+                            <span class="value"><strong>ימי שלישי</strong>, 19:00–21:30 · החל מ־1 בספטמבר 2026</span>
+                        </li>
+                        <li>
+                            <span class="label">היכן</span>
+                            <span class="value">סטודיו "המרחב" · רחוב הרצל 12, תל אביב</span>
+                        </li>
+                        <li>
+                            <span class="label">משך</span>
+                            <span class="value">8 מפגשים שבועיים · כ־20 שעות סך הכול</span>
+                        </li>
+                        <li>
+                            <span class="label">קבוצה</span>
+                            <span class="value">קבוצה אינטימית · עד 12 נשים</span>
+                        </li>
+                        <li>
+                            <span class="label">השקעה</span>
+                            <span class="value"><strong>1,800 ₪</strong> · אפשרות לתשלומים</span>
+                        </li>
+                        <li>
+                            <span class="label">להביא</span>
+                            <span class="value">בגדים נוחים · בקבוק מים · לב פתוח</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section id="cta" class="block" aria-labelledby="cta-title">
+            <div class="container">
+                <div class="section-eyebrow">— הרשמה —</div>
+                <h2 id="cta-title">בואי <span class="accent">לשחק</span></h2>
+                <p>
+                    המקומות מוגבלים. אם משהו בך אמר "כן" — שלחי הודעה ונדבר. אני שמחה להכיר אותך לפני ההרשמה.
+                </p>
+                <div class="button-row">
+                    <a id="whatsapp-button" class="btn btn-primary" href="#" rel="noopener">
+                        הודעה בוואטסאפ
+                    </a>
+                    <a id="email-button" class="btn btn-secondary" href="#">
+                        שליחת מייל
+                    </a>
+                </div>
+                <div class="share-row">
+                    <button id="share-button" type="button" class="btn btn-ghost">
+                        שיתוף הדף עם חברה
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
     <footer>
-        <div class="quote">"הגוף יודע. עלינו רק להקשיב."</div>
-        <div>הקורס של נטע · 2026 ©</div>
+        <div class="quote">"כשמשחקים — הכל אפשרי."</div>
+        <div>הקורס של נטע · <span lang="en">2026</span> ©</div>
     </footer>
 
     <script>
-        const WHATSAPP_NUMBER = '972501234567';
-        const EMAIL_ADDRESS = 'netta@example.com';
-        const COURSE_NAME = 'נוכחות, גוף ותנועה';
+        // ⚙️ הגדרות — ערכי לפני השקה
+        const CONFIG = {
+            whatsappNumber: '972501234567',
+            emailAddress: 'netta@example.com',
+            courseName: 'החופש לשחק'
+        };
+
+        const isPlaceholderWhatsApp = CONFIG.whatsappNumber === '972501234567';
+        const isPlaceholderEmail = CONFIG.emailAddress === 'netta@example.com';
 
         function handleWhatsApp(e) {
             e.preventDefault();
+            if (isPlaceholderWhatsApp) {
+                alert('המספר עדיין לא הוגדר. עדכני את CONFIG.whatsappNumber בקובץ index.html');
+                return;
+            }
             const message = encodeURIComponent(
-                `שלום נטע, ראיתי את אתר הקורס "${COURSE_NAME}" ואשמח לשמוע פרטים נוספים ולתאם שיחת היכרות.`
+                `שלום נטע! ראיתי את אתר הקורס "${CONFIG.courseName}" ואשמח לשמוע פרטים נוספים ולתאם שיחת היכרות.`
             );
-            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, '_blank');
+            window.open(`https://wa.me/${CONFIG.whatsappNumber}?text=${message}`, '_blank', 'noopener');
         }
 
         function handleEmail(e) {
             e.preventDefault();
-            const subject = encodeURIComponent(`התעניינות בקורס "${COURSE_NAME}"`);
-            const body = encodeURIComponent(
-                `שלום נטע,\n\nראיתי את אתר הקורס ואשמח לשמוע פרטים נוספים.\n\nתודה,`
-            );
-            window.location.href = `mailto:${EMAIL_ADDRESS}?subject=${subject}&body=${body}`;
+            if (isPlaceholderEmail) {
+                alert('כתובת המייל עדיין לא הוגדרה. עדכני את CONFIG.emailAddress בקובץ index.html');
+                return;
+            }
+            const subject = encodeURIComponent(`התעניינות בקורס "${CONFIG.courseName}"`);
+            const body = encodeURIComponent(`שלום נטע,\n\nראיתי את אתר הקורס ואשמח לשמוע פרטים נוספים.\n\nתודה,`);
+            window.location.href = `mailto:${CONFIG.emailAddress}?subject=${subject}&body=${body}`;
+        }
+
+        async function handleShare() {
+            const shareData = {
+                title: document.title,
+                text: 'קורס "החופש לשחק" בהנחיית נטע',
+                url: window.location.href
+            };
+            try {
+                if (navigator.share) {
+                    await navigator.share(shareData);
+                    return;
+                }
+            } catch (err) {
+                if (err.name === 'AbortError') return;
+            }
+            try {
+                await navigator.clipboard.writeText(window.location.href);
+                const btn = document.getElementById('share-button');
+                const original = btn.textContent;
+                btn.textContent = '✓ הקישור הועתק';
+                setTimeout(() => { btn.textContent = original; }, 2200);
+            } catch (err) {
+                alert('הקישור: ' + window.location.href);
+            }
         }
 
         function initReveal() {
+            if (!('IntersectionObserver' in window)) {
+                document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+                return;
+            }
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -618,8 +946,7 @@
                         observer.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.15 });
-
+            }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
             document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         }
 
@@ -627,20 +954,39 @@
             document.querySelectorAll('a[href^="#"]').forEach(link => {
                 link.addEventListener('click', (e) => {
                     const targetId = link.getAttribute('href');
-                    if (targetId === '#') return;
+                    if (targetId === '#' || targetId.length < 2) return;
                     const target = document.querySelector(targetId);
                     if (!target) return;
                     e.preventDefault();
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    target.setAttribute('tabindex', '-1');
+                    target.focus({ preventScroll: true });
                 });
             });
+        }
+
+        function initScrollProgress() {
+            const bar = document.getElementById('scroll-progress');
+            let ticking = false;
+            function update() {
+                const h = document.documentElement;
+                const scrolled = h.scrollTop / (h.scrollHeight - h.clientHeight) * 100;
+                bar.style.setProperty('--progress', Math.min(100, Math.max(0, scrolled)) + '%');
+                ticking = false;
+            }
+            window.addEventListener('scroll', () => {
+                if (!ticking) { requestAnimationFrame(update); ticking = true; }
+            }, { passive: true });
+            update();
         }
 
         document.addEventListener('DOMContentLoaded', () => {
             initReveal();
             initSmoothScroll();
+            initScrollProgress();
             document.getElementById('whatsapp-button').addEventListener('click', handleWhatsApp);
             document.getElementById('email-button').addEventListener('click', handleEmail);
+            document.getElementById('share-button').addEventListener('click', handleShare);
         });
     </script>
 </body>
